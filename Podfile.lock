@@ -1,8 +1,8 @@
 PODS:
   - Alamofire (4.5.0)
-  - Bond (6.2.6):
+  - Bond (6.2.11):
     - Diff (~> 0.4)
-    - ReactiveKit (~> 3.5.3)
+    - ReactiveKit (~> 3.6.0)
   - Diff (0.5.3)
   - Dollar (6.2.0)
   - Moya (8.0.5):
@@ -21,35 +21,51 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (4.2.2):
     - PromiseKit/CorePromise
-  - ReactiveKit (3.5.5)
+  - ReactiveKit (3.6.1)
   - Result (3.2.3)
   - SnapKit (3.2.0)
   - SwiftLint (0.20.0)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
-  - Bond
+  - Bond (from `https://github.com/ahartwel/Bond.git`, branch `swift-4`)
   - Dollar
   - Moya
   - PromiseKit
-  - ReactiveKit
+  - ReactiveKit (from `https://github.com/ReactiveKit/ReactiveKit.git`, branch `swift-4`)
   - SnapKit
   - SwiftLint
   - SwiftyJSON
 
+EXTERNAL SOURCES:
+  Bond:
+    :branch: swift-4
+    :git: https://github.com/ahartwel/Bond.git
+  ReactiveKit:
+    :branch: swift-4
+    :git: https://github.com/ReactiveKit/ReactiveKit.git
+
+CHECKOUT OPTIONS:
+  Bond:
+    :commit: 01ee29ebdfea330da3f1d50c97461326a9709e15
+    :git: https://github.com/ahartwel/Bond.git
+  ReactiveKit:
+    :commit: 7080488d9bd308dbb5e66cd362f7f77e34eb6f22
+    :git: https://github.com/ReactiveKit/ReactiveKit.git
+
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  Bond: 0d7a52e9aec644c3b4985ceeb224a402b1efd691
+  Bond: 9368988e90600ebd20cb329739fb893987b1c55a
   Diff: befa1d19c32726b2b36ce915d98793e2fbde8dcc
   Dollar: da81aacae30cf7dd059bfdfec709e97f2f0ae2f8
   Moya: c37eec09a098ba9991b5a963b291fc5704bdb9ef
   PromiseKit: 00e8886881f151c7e573d06b437915b0bb2970ec
-  ReactiveKit: ced30f9647912f74510bd8179790cf2dfc9454c8
+  ReactiveKit: 15faae1ab1be9604426dc9b0de65a158e9291cd6
   Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftLint: 3f7543509c931d1291395335f34e245d3919b7f2
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: d379a71bb0d5c0356dd0639b6ff94bbe902493dd
+PODFILE CHECKSUM: 1e50be9e5ed7e48a6d8bf6c08d7aebb59291059f
 
 COCOAPODS: 1.2.1

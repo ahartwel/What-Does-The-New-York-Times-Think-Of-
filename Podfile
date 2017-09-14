@@ -8,8 +8,8 @@ target 'NYTimesAPI' do
   use_frameworks!
   pod 'Moya'
   pod 'Dollar'
-  pod 'ReactiveKit'
-  pod 'Bond'
+  pod 'ReactiveKit', :git => 'https://github.com/ReactiveKit/ReactiveKit.git', :branch => 'swift-4'
+  pod 'Bond', :git => 'https://github.com/ahartwel/Bond.git', :branch => 'swift-4'
   pod 'SwiftLint'
   pod 'PromiseKit'
   pod 'SwiftyJSON'
@@ -25,5 +25,15 @@ target 'NYTimesAPI' do
     inherit! :search_paths
     # Pods for testing
   end
-
+  
+  post_install do |installer|
+      installer.pods_project.targets.each do |target|
+              target.build_configurations.each do |config|
+                  config.build_settings['SWIFT_VERSION'] = '3.2'
+              end
+      end
+  end
+  
 end
+
+
