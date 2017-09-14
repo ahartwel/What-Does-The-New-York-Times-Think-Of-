@@ -63,9 +63,11 @@ class TopicFinderViewModel: TopicFinderBindables, TimesTagRequester {
 }
 
 extension TopicFinderViewModel: TopicFinderActions {
+
     func searchQueryChanged(to string: String) {
         self.currentQuery.value = string
     }
+    
     func selectedTag(atIndex index: Int) {
         //lets just ignore this if this method is called with an invalid index
         if !self.currentResults.value.indices.contains(index) {
@@ -74,20 +76,5 @@ extension TopicFinderViewModel: TopicFinderActions {
         let selectedTag = self.currentResults.value[index]
         self.delegate.userSelected(tag: selectedTag)
     }
-}
-
-class TopicFinderViewModelDelegateStub: TopicFinderViewModelDelegate {
-    var calledShowError: Bool = false
-    var calledShowErrorWithError: Error?
-    func show(error: Error) {
-        self.calledShowError = true
-        self.calledShowErrorWithError = error
-    }
     
-    var calledUserSelectedTag: Bool = false
-    var calledUserSelectedTagWithTag: TimesTag?
-    func userSelected(tag: TimesTag) {
-        self.calledUserSelectedTag = true
-        self.calledUserSelectedTagWithTag = tag
-    }
 }

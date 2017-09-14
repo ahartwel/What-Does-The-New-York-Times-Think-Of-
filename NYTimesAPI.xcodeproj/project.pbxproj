@@ -11,6 +11,33 @@
 		2C0DC3261F69D4630077D711 /* ErrorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC3251F69D4630077D711 /* ErrorDelegate.swift */; };
 		2C0DC3271F69D4630077D711 /* ErrorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC3251F69D4630077D711 /* ErrorDelegate.swift */; };
 		2C0DC3281F69D4630077D711 /* ErrorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC3251F69D4630077D711 /* ErrorDelegate.swift */; };
+		2C0DC32B1F69E0D40077D711 /* TimesArticleApiDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC32A1F69E0D40077D711 /* TimesArticleApiDefinition.swift */; };
+		2C0DC32C1F69E0D40077D711 /* TimesArticleApiDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC32A1F69E0D40077D711 /* TimesArticleApiDefinition.swift */; };
+		2C0DC32D1F69E0D40077D711 /* TimesArticleApiDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC32A1F69E0D40077D711 /* TimesArticleApiDefinition.swift */; };
+		2C0DC32F1F69E2900077D711 /* TimesArticleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC32E1F69E2900077D711 /* TimesArticleAPI.swift */; };
+		2C0DC3301F69E2900077D711 /* TimesArticleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC32E1F69E2900077D711 /* TimesArticleAPI.swift */; };
+		2C0DC3311F69E2900077D711 /* TimesArticleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC32E1F69E2900077D711 /* TimesArticleAPI.swift */; };
+		2C0DC3331F69E2B70077D711 /* TimesArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC3321F69E2B70077D711 /* TimesArticle.swift */; };
+		2C0DC3341F69E2B70077D711 /* TimesArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC3321F69E2B70077D711 /* TimesArticle.swift */; };
+		2C0DC3351F69E2B70077D711 /* TimesArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC3321F69E2B70077D711 /* TimesArticle.swift */; };
+		2C0DC3371F69E57C0077D711 /* TimesArticleAPIDependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC3361F69E57C0077D711 /* TimesArticleAPIDependencyInjector.swift */; };
+		2C0DC3381F69E57C0077D711 /* TimesArticleAPIDependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC3361F69E57C0077D711 /* TimesArticleAPIDependencyInjector.swift */; };
+		2C0DC3391F69E57C0077D711 /* TimesArticleAPIDependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC3361F69E57C0077D711 /* TimesArticleAPIDependencyInjector.swift */; };
+		2C0DC33C1F69E6230077D711 /* TopicFinderViewModelDelegateStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC33A1F69E6230077D711 /* TopicFinderViewModelDelegateStub.swift */; };
+		2C0DC33D1F69E6230077D711 /* TopicFinderViewModelDelegateStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC33A1F69E6230077D711 /* TopicFinderViewModelDelegateStub.swift */; };
+		2C0DC3401F69E6A90077D711 /* SentimentAnalyserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC33F1F69E6A90077D711 /* SentimentAnalyserViewModel.swift */; };
+		2C0DC3411F69E6A90077D711 /* SentimentAnalyserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC33F1F69E6A90077D711 /* SentimentAnalyserViewModel.swift */; };
+		2C0DC3421F69E6A90077D711 /* SentimentAnalyserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC33F1F69E6A90077D711 /* SentimentAnalyserViewModel.swift */; };
+		2C0DC3441F69E7170077D711 /* SentimentAnalyserViewModelDelegateStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC3431F69E7170077D711 /* SentimentAnalyserViewModelDelegateStub.swift */; };
+		2C0DC3451F69E7170077D711 /* SentimentAnalyserViewModelDelegateStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC3431F69E7170077D711 /* SentimentAnalyserViewModelDelegateStub.swift */; };
+		2C0DC3481F69F1220077D711 /* SentimentAnalyserViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC3471F69F1220077D711 /* SentimentAnalyserViewModelTests.swift */; };
+		2C0DC34A1F69FA4D0077D711 /* SentimentAnalyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC3491F69FA4D0077D711 /* SentimentAnalyser.swift */; };
+		2C0DC34B1F69FA4D0077D711 /* SentimentAnalyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC3491F69FA4D0077D711 /* SentimentAnalyser.swift */; };
+		2C0DC34C1F69FA4D0077D711 /* SentimentAnalyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC3491F69FA4D0077D711 /* SentimentAnalyser.swift */; };
+		2C0DC34F1F69FC3F0077D711 /* SentimentAnalyserDependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC34E1F69FC3F0077D711 /* SentimentAnalyserDependencyInjector.swift */; };
+		2C0DC3501F69FC3F0077D711 /* SentimentAnalyserDependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC34E1F69FC3F0077D711 /* SentimentAnalyserDependencyInjector.swift */; };
+		2C0DC3511F69FC3F0077D711 /* SentimentAnalyserDependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC34E1F69FC3F0077D711 /* SentimentAnalyserDependencyInjector.swift */; };
+		2C0DC3531F69FEAC0077D711 /* SentimentAnalyserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC3521F69FEAC0077D711 /* SentimentAnalyserTests.swift */; };
 		2CEF54BF1F69CE110082063B /* TopicFinderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEF54BE1F69CE110082063B /* TopicFinderViewModel.swift */; };
 		2CEF54C01F69CE110082063B /* TopicFinderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEF54BE1F69CE110082063B /* TopicFinderViewModel.swift */; };
 		2CEF54C11F69CE110082063B /* TopicFinderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEF54BE1F69CE110082063B /* TopicFinderViewModel.swift */; };
@@ -64,6 +91,17 @@
 		24E9415AF46917AD96FE2850 /* Pods-NYTimesAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYTimesAPI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NYTimesAPI/Pods-NYTimesAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		2C0DC3231F69D3A30077D711 /* XCTestCaseObservableHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestCaseObservableHelper.swift; sourceTree = "<group>"; };
 		2C0DC3251F69D4630077D711 /* ErrorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorDelegate.swift; sourceTree = "<group>"; };
+		2C0DC32A1F69E0D40077D711 /* TimesArticleApiDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesArticleApiDefinition.swift; sourceTree = "<group>"; };
+		2C0DC32E1F69E2900077D711 /* TimesArticleAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesArticleAPI.swift; sourceTree = "<group>"; };
+		2C0DC3321F69E2B70077D711 /* TimesArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesArticle.swift; sourceTree = "<group>"; };
+		2C0DC3361F69E57C0077D711 /* TimesArticleAPIDependencyInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesArticleAPIDependencyInjector.swift; sourceTree = "<group>"; };
+		2C0DC33A1F69E6230077D711 /* TopicFinderViewModelDelegateStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicFinderViewModelDelegateStub.swift; sourceTree = "<group>"; };
+		2C0DC33F1F69E6A90077D711 /* SentimentAnalyserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentAnalyserViewModel.swift; sourceTree = "<group>"; };
+		2C0DC3431F69E7170077D711 /* SentimentAnalyserViewModelDelegateStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentAnalyserViewModelDelegateStub.swift; sourceTree = "<group>"; };
+		2C0DC3471F69F1220077D711 /* SentimentAnalyserViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentAnalyserViewModelTests.swift; sourceTree = "<group>"; };
+		2C0DC3491F69FA4D0077D711 /* SentimentAnalyser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentAnalyser.swift; sourceTree = "<group>"; };
+		2C0DC34E1F69FC3F0077D711 /* SentimentAnalyserDependencyInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentAnalyserDependencyInjector.swift; sourceTree = "<group>"; };
+		2C0DC3521F69FEAC0077D711 /* SentimentAnalyserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentAnalyserTests.swift; sourceTree = "<group>"; };
 		2CEF54BE1F69CE110082063B /* TopicFinderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicFinderViewModel.swift; sourceTree = "<group>"; };
 		2CEF54C61F69D1030082063B /* TopicFinderViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicFinderViewModelTests.swift; sourceTree = "<group>"; };
 		2CF5F6D21F69C2A900B1A0F7 /* NYTimesAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYTimesAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,10 +173,47 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		2C0DC3291F69E0C40077D711 /* TimesArticleAPI */ = {
+			isa = PBXGroup;
+			children = (
+				2C0DC32A1F69E0D40077D711 /* TimesArticleApiDefinition.swift */,
+				2C0DC32E1F69E2900077D711 /* TimesArticleAPI.swift */,
+				2C0DC3361F69E57C0077D711 /* TimesArticleAPIDependencyInjector.swift */,
+			);
+			name = TimesArticleAPI;
+			sourceTree = "<group>";
+		};
+		2C0DC33E1F69E6960077D711 /* SentimentAnalyser */ = {
+			isa = PBXGroup;
+			children = (
+				2C0DC33F1F69E6A90077D711 /* SentimentAnalyserViewModel.swift */,
+				2C0DC3431F69E7170077D711 /* SentimentAnalyserViewModelDelegateStub.swift */,
+			);
+			name = SentimentAnalyser;
+			sourceTree = "<group>";
+		};
+		2C0DC3461F69F1120077D711 /* SentimentAnalyserView */ = {
+			isa = PBXGroup;
+			children = (
+				2C0DC3471F69F1220077D711 /* SentimentAnalyserViewModelTests.swift */,
+			);
+			name = SentimentAnalyserView;
+			sourceTree = "<group>";
+		};
+		2C0DC34D1F69FA520077D711 /* SentimentAnalyser */ = {
+			isa = PBXGroup;
+			children = (
+				2C0DC3491F69FA4D0077D711 /* SentimentAnalyser.swift */,
+				2C0DC34E1F69FC3F0077D711 /* SentimentAnalyserDependencyInjector.swift */,
+			);
+			name = SentimentAnalyser;
+			sourceTree = "<group>";
+		};
 		2CEF54BD1F69CDFB0082063B /* TopicFinder */ = {
 			isa = PBXGroup;
 			children = (
 				2CEF54BE1F69CE110082063B /* TopicFinderViewModel.swift */,
+				2C0DC33A1F69E6230077D711 /* TopicFinderViewModelDelegateStub.swift */,
 			);
 			name = TopicFinder;
 			sourceTree = "<group>";
@@ -176,6 +251,7 @@
 		2CF5F6D41F69C2A900B1A0F7 /* NYTimesAPI */ = {
 			isa = PBXGroup;
 			children = (
+				2C0DC33E1F69E6960077D711 /* SentimentAnalyser */,
 				2CEF54BD1F69CDFB0082063B /* TopicFinder */,
 				2CF5F70F1F69C75900B1A0F7 /* Models */,
 				2CF5F7031F69C37400B1A0F7 /* Services */,
@@ -194,10 +270,12 @@
 		2CF5F6E91F69C2A900B1A0F7 /* NYTimesAPITests */ = {
 			isa = PBXGroup;
 			children = (
+				2C0DC3461F69F1120077D711 /* SentimentAnalyserView */,
 				2CEF54C21F69D0E00082063B /* TopicFinder */,
 				2CF5F6EA1F69C2A900B1A0F7 /* NYTimesAPITests.swift */,
 				2CF5F6EC1F69C2A900B1A0F7 /* Info.plist */,
 				2C0DC3231F69D3A30077D711 /* XCTestCaseObservableHelper.swift */,
+				2C0DC3521F69FEAC0077D711 /* SentimentAnalyserTests.swift */,
 			);
 			path = NYTimesAPITests;
 			sourceTree = "<group>";
@@ -214,6 +292,8 @@
 		2CF5F7031F69C37400B1A0F7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				2C0DC34D1F69FA520077D711 /* SentimentAnalyser */,
+				2C0DC3291F69E0C40077D711 /* TimesArticleAPI */,
 				2CF5F70A1F69C60600B1A0F7 /* TimesTagAPI */,
 				2CF5F7141F69C78C00B1A0F7 /* BaseService.swift */,
 			);
@@ -234,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				2CF5F7101F69C76600B1A0F7 /* TimesTags.swift */,
+				2C0DC3321F69E2B70077D711 /* TimesArticle.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -547,14 +628,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C0DC3401F69E6A90077D711 /* SentimentAnalyserViewModel.swift in Sources */,
+				2C0DC32F1F69E2900077D711 /* TimesArticleAPI.swift in Sources */,
 				2CEF54BF1F69CE110082063B /* TopicFinderViewModel.swift in Sources */,
 				2CF5F70C1F69C61E00B1A0F7 /* TimesTagAPI.swift in Sources */,
+				2C0DC3371F69E57C0077D711 /* TimesArticleAPIDependencyInjector.swift in Sources */,
 				2C0DC3261F69D4630077D711 /* ErrorDelegate.swift in Sources */,
 				2CF5F6D81F69C2A900B1A0F7 /* ViewController.swift in Sources */,
+				2C0DC34F1F69FC3F0077D711 /* SentimentAnalyserDependencyInjector.swift in Sources */,
 				2CF5F7151F69C78C00B1A0F7 /* BaseService.swift in Sources */,
 				2CF5F7051F69C38600B1A0F7 /* TimesTagAPIDefinition.swift in Sources */,
+				2C0DC3331F69E2B70077D711 /* TimesArticle.swift in Sources */,
 				2CF5F7111F69C76600B1A0F7 /* TimesTags.swift in Sources */,
+				2C0DC32B1F69E0D40077D711 /* TimesArticleApiDefinition.swift in Sources */,
 				2CF5F6D61F69C2A900B1A0F7 /* AppDelegate.swift in Sources */,
+				2C0DC34A1F69FA4D0077D711 /* SentimentAnalyser.swift in Sources */,
 				2CF5F7191F69C9A300B1A0F7 /* TimesTagAPIDependencyInjector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -564,15 +652,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CEF54C71F69D1030082063B /* TopicFinderViewModelTests.swift in Sources */,
+				2C0DC3531F69FEAC0077D711 /* SentimentAnalyserTests.swift in Sources */,
 				2CF5F71A1F69C9A300B1A0F7 /* TimesTagAPIDependencyInjector.swift in Sources */,
 				2CF5F7061F69C38600B1A0F7 /* TimesTagAPIDefinition.swift in Sources */,
+				2C0DC3501F69FC3F0077D711 /* SentimentAnalyserDependencyInjector.swift in Sources */,
+				2C0DC3341F69E2B70077D711 /* TimesArticle.swift in Sources */,
+				2C0DC3441F69E7170077D711 /* SentimentAnalyserViewModelDelegateStub.swift in Sources */,
+				2C0DC34B1F69FA4D0077D711 /* SentimentAnalyser.swift in Sources */,
 				2C0DC3241F69D3A30077D711 /* XCTestCaseObservableHelper.swift in Sources */,
+				2C0DC3301F69E2900077D711 /* TimesArticleAPI.swift in Sources */,
 				2CEF54C01F69CE110082063B /* TopicFinderViewModel.swift in Sources */,
 				2CF5F70D1F69C61E00B1A0F7 /* TimesTagAPI.swift in Sources */,
+				2C0DC3481F69F1220077D711 /* SentimentAnalyserViewModelTests.swift in Sources */,
+				2C0DC33C1F69E6230077D711 /* TopicFinderViewModelDelegateStub.swift in Sources */,
 				2CF5F6EB1F69C2A900B1A0F7 /* NYTimesAPITests.swift in Sources */,
+				2C0DC3411F69E6A90077D711 /* SentimentAnalyserViewModel.swift in Sources */,
 				2C0DC3271F69D4630077D711 /* ErrorDelegate.swift in Sources */,
 				2CF5F7161F69C78C00B1A0F7 /* BaseService.swift in Sources */,
+				2C0DC32C1F69E0D40077D711 /* TimesArticleApiDefinition.swift in Sources */,
 				2CF5F7121F69C76600B1A0F7 /* TimesTags.swift in Sources */,
+				2C0DC3381F69E57C0077D711 /* TimesArticleAPIDependencyInjector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,11 +680,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CF5F7171F69C78C00B1A0F7 /* BaseService.swift in Sources */,
+				2C0DC3391F69E57C0077D711 /* TimesArticleAPIDependencyInjector.swift in Sources */,
+				2C0DC3451F69E7170077D711 /* SentimentAnalyserViewModelDelegateStub.swift in Sources */,
+				2C0DC3311F69E2900077D711 /* TimesArticleAPI.swift in Sources */,
 				2CF5F70E1F69C61E00B1A0F7 /* TimesTagAPI.swift in Sources */,
+				2C0DC3351F69E2B70077D711 /* TimesArticle.swift in Sources */,
+				2C0DC33D1F69E6230077D711 /* TopicFinderViewModelDelegateStub.swift in Sources */,
+				2C0DC3511F69FC3F0077D711 /* SentimentAnalyserDependencyInjector.swift in Sources */,
 				2CF5F6F61F69C2A900B1A0F7 /* NYTimesAPIUITests.swift in Sources */,
+				2C0DC32D1F69E0D40077D711 /* TimesArticleApiDefinition.swift in Sources */,
+				2C0DC3421F69E6A90077D711 /* SentimentAnalyserViewModel.swift in Sources */,
 				2CF5F7131F69C76600B1A0F7 /* TimesTags.swift in Sources */,
 				2CEF54C11F69CE110082063B /* TopicFinderViewModel.swift in Sources */,
 				2C0DC3281F69D4630077D711 /* ErrorDelegate.swift in Sources */,
+				2C0DC34C1F69FA4D0077D711 /* SentimentAnalyser.swift in Sources */,
 				2CF5F71B1F69C9A300B1A0F7 /* TimesTagAPIDependencyInjector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

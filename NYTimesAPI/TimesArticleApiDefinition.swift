@@ -1,5 +1,5 @@
 //
-//  TimesTagAPI.swift
+//  TimesArticleApiDefinition.swift
 //  NYTimesAPI
 //
 //  Created by Alex Hartwell on 9/13/17.
@@ -10,25 +10,25 @@ import Foundation
 import Moya
 import Alamofire
 
-enum TimesTagAPIDefinition {
-    case getTags(query: String)
+enum TimesArticleAPIDefinition {
+    case getArticles(byTag: TimesTag)
 }
 
-extension TimesTagAPIDefinition: TargetType {
+extension TimesArticleAPIDefinition: TargetType {
     var baseURL: URL {
         return URL(string: "https://api.nytimes.com")!
     }
-    
+
     var path: String {
         switch self {
-            case .getTags:
-                return "/svc/suggest/v1/timestags"
+        case .getArticles:
+            return "/svc/search/v2/articlesearch.json"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getTags:
+        case .getArticles:
             return .get
         }
     }
@@ -37,8 +37,9 @@ extension TimesTagAPIDefinition: TargetType {
         var params: [String: Any] = [:]
         params["api-key"] = "22a446284ae54d38815727523d44acb4"
         switch self {
-            case .getTags(let query):
-            params["query"] = query
+        case .getArticles(let tag):
+            params["q"] = tag.fullTag
+            params["fl"] = "snippet, headline" //we only want the api to return the headline and the snippet
         }
         return params
     }
@@ -54,5 +55,4 @@ extension TimesTagAPIDefinition: TargetType {
     var task: Task {
         return .request
     }
-    
 }
