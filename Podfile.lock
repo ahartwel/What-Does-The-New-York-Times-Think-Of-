@@ -5,6 +5,11 @@ PODS:
     - ReactiveKit (~> 3.6.0)
   - Diff (0.5.3)
   - Dollar (6.2.0)
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
   - Moya (8.0.5):
     - Moya/Core (= 8.0.5)
   - Moya/Core (8.0.5):
@@ -30,6 +35,7 @@ PODS:
 DEPENDENCIES:
   - Bond (from `https://github.com/ahartwel/Bond.git`, branch `swift-4`)
   - Dollar
+  - FBSnapshotTestCase
   - Moya
   - PromiseKit
   - ReactiveKit (from `https://github.com/ReactiveKit/ReactiveKit.git`, branch `swift-4`)
@@ -58,6 +64,7 @@ SPEC CHECKSUMS:
   Bond: 9368988e90600ebd20cb329739fb893987b1c55a
   Diff: befa1d19c32726b2b36ce915d98793e2fbde8dcc
   Dollar: da81aacae30cf7dd059bfdfec709e97f2f0ae2f8
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   Moya: c37eec09a098ba9991b5a963b291fc5704bdb9ef
   PromiseKit: 00e8886881f151c7e573d06b437915b0bb2970ec
   ReactiveKit: 15faae1ab1be9604426dc9b0de65a158e9291cd6
@@ -66,6 +73,6 @@ SPEC CHECKSUMS:
   SwiftLint: 3f7543509c931d1291395335f34e245d3919b7f2
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 1e50be9e5ed7e48a6d8bf6c08d7aebb59291059f
+PODFILE CHECKSUM: 1bae487379dcda9c131f581a3867444f896d956b
 
 COCOAPODS: 1.2.1

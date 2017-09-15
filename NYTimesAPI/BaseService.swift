@@ -11,10 +11,19 @@ import Moya
 import PromiseKit
 import SwiftyJSON
 
+class ServiceSettings {
+    static var stubRequests: Bool = false
+}
+
 class BaseService<T: TargetType> {
     
     lazy var provider: MoyaProvider<T> = {
-        let provider = MoyaProvider<T>()
+        let provider = MoyaProvider<T>(stubClosure: { _ -> Moya.StubBehavior in
+            if ServiceSettings.stubRequests {
+                return .immediate
+            }
+            return .never
+        })
         return provider
     }()
     
@@ -24,6 +33,10 @@ class BaseService<T: TargetType> {
             switch result {
             case let .success(moyaResponse):
                 let data = moyaResponse.data
+                if let string = String.init(data: data, encoding: .utf8) {
+                    let json = JSON(parseJSON: string)
+                    return fulfill(json)
+                }
                 let json = JSON(data)
                 fulfill(json)
             case let .failure(error):

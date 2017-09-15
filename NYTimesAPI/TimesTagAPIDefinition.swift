@@ -48,7 +48,11 @@ extension TimesTagAPIDefinition: TargetType {
     }
     
     var sampleData: Data {
-        return Data()
+        switch self {
+        case .getTags:
+            //swiftlint:disable:next line_length
+            return "[\"t\",[\"Mightier Than the Sword: Uncle Tom Cabin and the Battle for America (Book) (Ttl)\",\"New York State (Geo)\",\"Television (Des)\",\"Taxation (Des)\",\"Travel and Vacations (Des)\",\"Economic Conditions and Trends (Des)\",\"Theater (Des)\",\"Terrorism (Des)\",\"Tennis (Des)\",\"International Trade and World Market (Des)\"]]".data(using: .utf8)!
+        }
     }
     
     var task: Task {

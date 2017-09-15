@@ -19,6 +19,7 @@ target 'NYTimesAPI' do
   target 'NYTimesAPITests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'FBSnapshotTestCase'
   end
 
   target 'NYTimesAPIUITests' do
