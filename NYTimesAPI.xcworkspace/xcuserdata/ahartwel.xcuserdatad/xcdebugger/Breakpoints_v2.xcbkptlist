@@ -10,60 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NYTimesAPI/SentimentAnalyserViewModel.swift"
-            timestampString = "527041085.38153"
+            timestampString = "527133585.317729"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "105"
             endingLineNumber = "105"
             landmarkName = "preformSentimentAnalysis(onArticles:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;NYTimesAPI.Sentiment&gt;) -&gt; () in NYTimesAPI.SentimentAnalyserViewModel.preformSentimentAnalysis(onArticles: Swift.Array&lt;NYTimesAPI.TimesArticle&gt;) -&gt; ()"
-                  moduleName = "NYTimesAPI"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ahartwel/Documents/experiments/NYTimesAPI/NYTimesAPI/SentimentAnalyserViewModel.swift"
-                  timestampString = "527127891.591405"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
-                  offsetFromSymbolStart = "38">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;NYTimesAPITests.Sentiment&gt;) -&gt; () in NYTimesAPITests.SentimentAnalyserViewModel.preformSentimentAnalysis(onArticles: Swift.Array&lt;NYTimesAPITests.TimesArticle&gt;) -&gt; ()"
-                  moduleName = "NYTimesAPITests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ahartwel/Documents/experiments/NYTimesAPI/NYTimesAPI/SentimentAnalyserViewModel.swift"
-                  timestampString = "527127892.837967"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
-                  offsetFromSymbolStart = "38">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NYTimesAPITests/TopicFinderJSONParsingTest.swift"
-            timestampString = "527127891.584042"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "testStringToJSON()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

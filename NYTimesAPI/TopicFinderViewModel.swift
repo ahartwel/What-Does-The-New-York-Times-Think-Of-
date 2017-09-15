@@ -11,7 +11,7 @@ import ReactiveKit
 import Bond
 import PromiseKit
 
-protocol TopicFinderActions {
+protocol TopicFinderActions: class {
     func searchQueryChanged(to string: String)
     func selectedTag(atIndex index: Int)
 }
@@ -24,7 +24,7 @@ protocol TopicFinderBindables {
 //The view controller will conform to this protocol, that way if errors happen in the view model the controller
 //can present them/ the controller can present any views that branch off of this screen
 protocol TopicFinderViewModelDelegate: class, ErrorPresenter {
-    func userSelected(tag: TimesTag)
+    func selected(tag: TimesTag)
 }
 
 class TopicFinderViewModel: TopicFinderBindables, TimesTagRequester {
@@ -74,7 +74,7 @@ extension TopicFinderViewModel: TopicFinderActions {
             return
         }
         let selectedTag = self.currentResults.value[index]
-        self.delegate.userSelected(tag: selectedTag)
+        self.delegate.selected(tag: selectedTag)
     }
     
 }

@@ -94,7 +94,7 @@ class SentimentAnalyserImplementation: SentimentAnalyser {
         
         // Tokenize and count the sentence
         tagger.enumerateTags(in: range,
-                             scheme: NSLinguisticTagScheme.nameType,
+                             scheme: .nameType,
                              options: options) { _, tokenRange, _, _ in
             let token = (text as NSString).substring(with: tokenRange).lowercased()
             // Skip small words
