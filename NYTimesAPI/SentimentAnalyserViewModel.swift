@@ -51,7 +51,6 @@ protocol SentimentAnalyserBindables {
 }
 
 protocol SentimentAnalyserViewModelDelegate: class, ErrorPresenter {
-    func goBackToLastScreen()
 }
 
 class SentimentAnalyserViewModel: SentimentAnalyserBindables, TimesArticleRequester, SentimentAnalyserRequester {
@@ -102,7 +101,8 @@ class SentimentAnalyserViewModel: SentimentAnalyserBindables, TimesArticleReques
     
     func preformSentimentAnalysis(onArticles articles: [TimesArticle]) {
         self.sentimentAnalyser.analyse(timesArticles: articles).then { sentiments -> Void in
-            self.sentiment.value = self.sentimentAnalyser.mostCommonSentiment(from: sentiments)
+            let sentiment = self.sentimentAnalyser.mostCommonSentiment(from: sentiments)
+            self.sentiment.value = sentiment
         }.catch { error -> Void in
             self.delegate.show(error: error)
             self.loadingStatus.value = .error

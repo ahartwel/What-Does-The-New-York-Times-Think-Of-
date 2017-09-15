@@ -111,5 +111,6 @@ class TopicFinderView: UIView {
 extension TopicFinderView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.searchView.resignFirstResponder()
+        self.actions?.selectedTag(atIndex: indexPath.row)
     }
 }

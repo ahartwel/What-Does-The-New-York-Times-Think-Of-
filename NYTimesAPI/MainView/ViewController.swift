@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     lazy var mainView: MainView = MainView()
     lazy var topicFinderViewModel: TopicFinderViewModel = TopicFinderViewModel(delegate: self)
-    
+    lazy var sentimentAnalysisViewModel: SentimentAnalyserViewModel = SentimentAnalyserViewModel(withDelegate: self)
     override func loadView() {
         self.view = self.mainView
         self.mainView.bind(to: self.topicFinderViewModel, withActions: self.topicFinderViewModel)
@@ -21,6 +21,10 @@ class ViewController: UIViewController {
 
 extension ViewController: TopicFinderViewModelDelegate {
     func selected(tag: TimesTag) {
-        
+        self.sentimentAnalysisViewModel.set(tag: tag)
     }
+}
+
+extension ViewController: SentimentAnalyserViewModelDelegate {
+    
 }
