@@ -80,7 +80,6 @@
 		2CF5F6F61F69C2A900B1A0F7 /* NYTimesAPIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5F6F51F69C2A900B1A0F7 /* NYTimesAPIUITests.swift */; };
 		2CF5F7051F69C38600B1A0F7 /* TimesTagAPIDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5F7041F69C38600B1A0F7 /* TimesTagAPIDefinition.swift */; };
 		2CF5F7061F69C38600B1A0F7 /* TimesTagAPIDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5F7041F69C38600B1A0F7 /* TimesTagAPIDefinition.swift */; };
-		2CF5F7091F69C53500B1A0F7 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2CF5F7081F69C53500B1A0F7 /* .swiftlint.yml */; };
 		2CF5F70C1F69C61E00B1A0F7 /* TimesTagAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5F70B1F69C61E00B1A0F7 /* TimesTagAPI.swift */; };
 		2CF5F70D1F69C61E00B1A0F7 /* TimesTagAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5F70B1F69C61E00B1A0F7 /* TimesTagAPI.swift */; };
 		2CF5F70E1F69C61E00B1A0F7 /* TimesTagAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5F70B1F69C61E00B1A0F7 /* TimesTagAPI.swift */; };
@@ -143,6 +142,7 @@
 		2CAD4C5B1F6CA3E9008C737B /* SentimentAnalysisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentAnalysisView.swift; sourceTree = "<group>"; };
 		2CCEE59A1F6D87C80093F870 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		2CCEE59C1F6D87F00093F870 /* ReadMeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMeController.swift; sourceTree = "<group>"; };
+		2CCEE5A31F6DA5EF0093F870 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		2CDA61091F6A0E120033D8D8 /* SentimentPolarity.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SentimentPolarity.mlmodel; sourceTree = "<group>"; };
 		2CEF54BE1F69CE110082063B /* TopicFinderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicFinderViewModel.swift; sourceTree = "<group>"; };
 		2CEF54C61F69D1030082063B /* TopicFinderViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicFinderViewModelTests.swift; sourceTree = "<group>"; };
@@ -159,7 +159,6 @@
 		2CF5F6F51F69C2A900B1A0F7 /* NYTimesAPIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTimesAPIUITests.swift; sourceTree = "<group>"; };
 		2CF5F6F71F69C2A900B1A0F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CF5F7041F69C38600B1A0F7 /* TimesTagAPIDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesTagAPIDefinition.swift; sourceTree = "<group>"; };
-		2CF5F7081F69C53500B1A0F7 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		2CF5F70B1F69C61E00B1A0F7 /* TimesTagAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesTagAPI.swift; sourceTree = "<group>"; };
 		2CF5F7101F69C76600B1A0F7 /* TimesTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesTags.swift; sourceTree = "<group>"; };
 		2CF5F7141F69C78C00B1A0F7 /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
@@ -221,7 +220,6 @@
 				2C0DC3361F69E57C0077D711 /* TimesArticleAPIDependencyInjector.swift */,
 				2C0DC32A1F69E0D40077D711 /* TimesArticleApiDefinition.swift */,
 			);
-			name = TimesArticleAPI;
 			path = TimesArticleAPI;
 			sourceTree = "<group>";
 		};
@@ -232,7 +230,6 @@
 				2C0DC3431F69E7170077D711 /* SentimentAnalyserViewModelDelegateStub.swift */,
 				2CAD4C5B1F6CA3E9008C737B /* SentimentAnalysisView.swift */,
 			);
-			name = SentimentAnalyserView;
 			path = SentimentAnalyserView;
 			sourceTree = "<group>";
 		};
@@ -241,7 +238,6 @@
 			children = (
 				2C0DC3471F69F1220077D711 /* SentimentAnalyserViewModelTests.swift */,
 			);
-			name = SentimentAnalyserView;
 			path = SentimentAnalyserView;
 			sourceTree = "<group>";
 		};
@@ -251,7 +247,6 @@
 				2C0DC3491F69FA4D0077D711 /* SentimentAnalyser.swift */,
 				2C0DC34E1F69FC3F0077D711 /* SentimentAnalyserDependencyInjector.swift */,
 			);
-			name = SentimentAnalyser;
 			path = SentimentAnalyser;
 			sourceTree = "<group>";
 		};
@@ -311,7 +306,6 @@
 				2C0DC33A1F69E6230077D711 /* TopicFinderViewModelDelegateStub.swift */,
 				2C420ED01F6D7A0500CBD50D /* TopicTableViewCell.swift */,
 			);
-			name = TopicFinder;
 			path = TopicFinder;
 			sourceTree = "<group>";
 		};
@@ -322,13 +316,13 @@
 				2CEF54C61F69D1030082063B /* TopicFinderViewModelTests.swift */,
 				2C0F1A791F6B559300BB740D /* TopicSearchViewTest.swift */,
 			);
-			name = TopicFinder;
 			path = TopicFinder;
 			sourceTree = "<group>";
 		};
 		2CF5F6C91F69C2A900B1A0F7 = {
 			isa = PBXGroup;
 			children = (
+				2CCEE5A31F6DA5EF0093F870 /* .swiftlint.yml */,
 				EDAE31F939FAC2BA0D92FD68 /* Frameworks */,
 				2CF5F6D41F69C2A900B1A0F7 /* NYTimesAPI */,
 				2CF5F6E91F69C2A900B1A0F7 /* NYTimesAPITests */,
@@ -360,7 +354,6 @@
 				2C0DC33E1F69E6960077D711 /* SentimentAnalyserView */,
 				2CF5F7031F69C37400B1A0F7 /* Services */,
 				2CEF54BD1F69CDFB0082063B /* TopicFinder */,
-				2CF5F7081F69C53500B1A0F7 /* .swiftlint.yml */,
 				2CF5F6D51F69C2A900B1A0F7 /* AppDelegate.swift */,
 				2CF5F6DC1F69C2A900B1A0F7 /* Assets.xcassets */,
 				2C0DC3251F69D4630077D711 /* ErrorDelegate.swift */,
@@ -404,7 +397,6 @@
 				2CF5F70A1F69C60600B1A0F7 /* TimesTagAPI */,
 				2CF5F7141F69C78C00B1A0F7 /* BaseService.swift */,
 			);
-			name = Services;
 			path = Services;
 			sourceTree = "<group>";
 		};
@@ -415,7 +407,6 @@
 				2CF5F7041F69C38600B1A0F7 /* TimesTagAPIDefinition.swift */,
 				2CF5F7181F69C9A300B1A0F7 /* TimesTagAPIDependencyInjector.swift */,
 			);
-			name = TimesTagAPI;
 			path = TimesTagAPI;
 			sourceTree = "<group>";
 		};
@@ -425,7 +416,6 @@
 				2C0DC3321F69E2B70077D711 /* TimesArticle.swift */,
 				2CF5F7101F69C76600B1A0F7 /* TimesTags.swift */,
 			);
-			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -559,7 +549,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CF5F7091F69C53500B1A0F7 /* .swiftlint.yml in Resources */,
 				2CF5F6E01F69C2A900B1A0F7 /* LaunchScreen.storyboard in Resources */,
 				2CF5F6DD1F69C2A900B1A0F7 /* Assets.xcassets in Resources */,
 				2CCEE5A01F6D89EE0093F870 /* readme.md in Resources */,
@@ -612,7 +601,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n${PODS_ROOT}/SwiftLint/swiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\n${PODS_ROOT}/SwiftLint/swiftlint lint --config .swiftlint.yml\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		448054905F91C0E79DB49859 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
