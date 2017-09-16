@@ -64,6 +64,7 @@
 		2CCEE5A01F6D89EE0093F870 /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 2CCEE59A1F6D87C80093F870 /* readme.md */; };
 		2CCEE5A11F6D89EE0093F870 /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 2CCEE59A1F6D87C80093F870 /* readme.md */; };
 		2CCEE5A21F6D89EF0093F870 /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 2CCEE59A1F6D87C80093F870 /* readme.md */; };
+		2CCEE5A51F6DA90B0093F870 /* SentimentAnalyserViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCEE5A41F6DA90B0093F870 /* SentimentAnalyserViewTests.swift */; };
 		2CDA61081F6A0DC40033D8D8 /* TimesTagAPIDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5F7041F69C38600B1A0F7 /* TimesTagAPIDefinition.swift */; };
 		2CDA610A1F6A0E120033D8D8 /* SentimentPolarity.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2CDA61091F6A0E120033D8D8 /* SentimentPolarity.mlmodel */; };
 		2CDA610B1F6A0E120033D8D8 /* SentimentPolarity.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2CDA61091F6A0E120033D8D8 /* SentimentPolarity.mlmodel */; };
@@ -143,6 +144,7 @@
 		2CCEE59A1F6D87C80093F870 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = readme.md; path = ../readme.md; sourceTree = "<group>"; };
 		2CCEE59C1F6D87F00093F870 /* ReadMeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMeController.swift; sourceTree = "<group>"; };
 		2CCEE5A31F6DA5EF0093F870 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		2CCEE5A41F6DA90B0093F870 /* SentimentAnalyserViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentAnalyserViewTests.swift; sourceTree = "<group>"; };
 		2CDA61091F6A0E120033D8D8 /* SentimentPolarity.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SentimentPolarity.mlmodel; sourceTree = "<group>"; };
 		2CEF54BE1F69CE110082063B /* TopicFinderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicFinderViewModel.swift; sourceTree = "<group>"; };
 		2CEF54C61F69D1030082063B /* TopicFinderViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicFinderViewModelTests.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				2C0DC3471F69F1220077D711 /* SentimentAnalyserViewModelTests.swift */,
+				2CCEE5A41F6DA90B0093F870 /* SentimentAnalyserViewTests.swift */,
 			);
 			path = SentimentAnalyserView;
 			sourceTree = "<group>";
@@ -791,6 +794,7 @@
 				2C0DC32C1F69E0D40077D711 /* TimesArticleApiDefinition.swift in Sources */,
 				2CF5F7121F69C76600B1A0F7 /* TimesTags.swift in Sources */,
 				2CCEE59E1F6D87F00093F870 /* ReadMeController.swift in Sources */,
+				2CCEE5A51F6DA90B0093F870 /* SentimentAnalyserViewTests.swift in Sources */,
 				2C0DC3381F69E57C0077D711 /* TimesArticleAPIDependencyInjector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

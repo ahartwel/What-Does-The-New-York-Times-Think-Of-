@@ -18,7 +18,7 @@ class TopicFinderViewModelDelegateStub: TopicFinderViewModelDelegate {
     
     var calledUserSelectedTag: Bool = false
     var calledUserSelectedTagWithTag: TimesTag?
-    func userSelected(tag: TimesTag) {
+    func selected(tag: TimesTag) {
         self.calledUserSelectedTag = true
         self.calledUserSelectedTagWithTag = tag
     }

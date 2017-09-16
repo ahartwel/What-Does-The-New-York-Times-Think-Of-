@@ -8,8 +8,8 @@
 
 import XCTest
 
-fileprivate var timesArticleApiStub: TimesArticleAPIStub = TimesArticleAPIStub()
-fileprivate var sentimentAnalyzerStub: SentimentAnalyzerStub = SentimentAnalyzerStub()
+var timesArticleApiStub: TimesArticleAPIStub = TimesArticleAPIStub()
+var sentimentAnalyzerStub: SentimentAnalyzerStub = SentimentAnalyzerStub()
 extension SentimentAnalyzerViewModel {
     var timesArticleApi: TimesArticleAPI {
         return timesArticleApiStub

@@ -65,18 +65,19 @@ class TopicFinderViewModelTests: XCTestCase {
             TimesTag(fullTag: "test2"),
             TimesTag(fullTag: "test3")
         ]
-        self.actions.selectedTag(atIndex: 1)
+        let string = self.actions.selectedTag(atIndex: 1)
         XCTAssertEqual(self.viewModelDelegateStub.calledUserSelectedTag, true)
         XCTAssertEqual(self.viewModelDelegateStub.calledUserSelectedTagWithTag?.fullTag, "test2")
+        XCTAssertEqual(string, "test2")
     }
     
     func testCallingSelectTagAtNegativeIndex() {
-        self.actions.selectedTag(atIndex: -1)
+        _ = self.actions.selectedTag(atIndex: -1)
         XCTAssertEqual(self.viewModelDelegateStub.calledUserSelectedTag, false)
     }
     
     func testCallingSelectTagAtIndexOutOfRange() {
-        self.actions.selectedTag(atIndex: 1)
+        _ = self.actions.selectedTag(atIndex: 1)
         XCTAssertEqual(self.viewModelDelegateStub.calledUserSelectedTag, false)
     }
     
