@@ -18,19 +18,22 @@ class TopicFinderView: UIView {
         label.text = "What does the NYTimes think of..."
         return label
     }()
+    
     lazy var searchView: UITextField = {
         var view = UITextField()
         view.font = UIConstants.subHeaderFont
+        view.delegate = self
         view.placeholder = "Type a topic..."
         view.addTarget(self, action: #selector(self.searchViewChanged), for: UIControlEvents.editingChanged)
         return view
     }()
-    var tableViewFullHeight: Constraint?
-    var tableViewNoHeight: Constraint?
+    
+    var resultsTableViewBottomConstraint: Constraint?
     lazy var resultsTableView: UITableView = {
         var tableView = UITableView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
+        tableView.alpha = 0
         return tableView
     }()
     
@@ -47,29 +50,11 @@ class TopicFinderView: UIView {
     }
     
     func didLoad() {
-        self.listenToKeyboard()
+        self.setUpKeyboardListeners()
         self.addSubview(self.headerView)
         self.addSubview(self.searchView)
         self.addSubview(self.resultsTableView)
         self.addConstraints()
-    }
-    
-    func listenToKeyboard() {
-        NotificationCenter.default.reactive.notification(name: .UIKeyboardWillShow).observeNext(with: { notification in
-            self.tableViewNoHeight?.deactivate()
-            guard let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect else {
-                return
-            }
-            self.tableViewFullHeight?.activate()
-            self.tableViewFullHeight?.update(offset: keyboardFrame.height)
-            self.setNeedsUpdateConstraints()
-        }).dispose(in: self.bag)
-        
-        NotificationCenter.default.reactive.notification(name: .UIKeyboardWillHide).observeNext(with: { _ in
-            self.tableViewNoHeight?.activate()
-            self.tableViewFullHeight?.deactivate()
-            self.setNeedsUpdateConstraints()
-        }).dispose(in: self.bag)
     }
     
     func bind(to viewModel: TopicFinderBindables, withActions actions: TopicFinderActions) {
@@ -81,7 +66,6 @@ class TopicFinderView: UIView {
             cell.textLabel?.text = models[indexPath.row].fullTag
             return cell
         }).dispose(in: self.bag)
-    
     }
 
     @objc func searchViewChanged(_ textField: UITextField) {
@@ -100,17 +84,34 @@ class TopicFinderView: UIView {
         self.resultsTableView.snp.remakeConstraints({ make in
             make.top.equalTo(self.searchView.snp.bottom).offset(UIConstants.padding)
             make.left.right.equalTo(self).inset(UIConstants.padding)
-            self.tableViewFullHeight = make.height.equalTo(UIConstants.resultsTableHeight).constraint
-            self.tableViewNoHeight = make.height.equalTo(0).constraint
-            self.tableViewNoHeight?.deactivate()
-            make.bottom.equalTo(self)
+            self.resultsTableViewBottomConstraint = make.bottom.equalTo(self).inset(0).constraint
         })
+    }
+}
+
+extension TopicFinderView: KeyboardListener {
+    func onKeyboardClose() {
+        self.resultsTableView.alpha = 0
+    }
+    
+    func onKeyboardOpen(withFrame frame: CGRect) {
+        self.resultsTableView.alpha = 1
+        self.resultsTableViewBottomConstraint?.update(inset: frame.height)
+        self.setNeedsUpdateConstraints()
+    }
+}
+
+extension TopicFinderView: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
     }
 }
 
 extension TopicFinderView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.searchView.resignFirstResponder()
-        self.actions?.selectedTag(atIndex: indexPath.row)
+        if let tagString = self.actions?.selectedTag(atIndex: indexPath.row) {
+            self.searchView.text = tagString
+        }
     }
 }

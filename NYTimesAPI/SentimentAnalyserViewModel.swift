@@ -22,6 +22,18 @@ enum Sentiment {
     case unknown
 }
 extension Sentiment {
+    var emoji: String {
+        switch self {
+        case .good:
+            return "😀"
+        case .bad:
+            return "😕"
+        case .neutral:
+            return "😐"
+        case .unknown:
+            return "🤖"
+        }
+    }
     var string: String {
         switch self {
         case .good:
@@ -43,11 +55,27 @@ enum LoadingStatus {
     case done
 }
 
+extension LoadingStatus {
+    var string: String {
+        switch self {
+        case .error:
+            return "Something went wrong"
+        case .gettingArticles:
+            return "Getting articles..."
+        case .analysingArticles:
+            return "Analysing the articles..."
+        case .done:
+            return "Done"
+        }
+    }
+}
+
 protocol SentimentAnalyserBindables {
     var currentTag: Observable<TimesTag?> { get }
     var articles: Observable<[TimesArticle]> { get }
     var sentiment: Observable<Sentiment> { get }
     var loadingStatus: Observable<LoadingStatus> { get }
+    var loadingText: Signal<String, NoError> { get }
 }
 
 protocol SentimentAnalyserViewModelDelegate: class, ErrorPresenter {
@@ -62,7 +90,13 @@ class SentimentAnalyserViewModel: SentimentAnalyserBindables, TimesArticleReques
     var articles: Property<[TimesArticle]> = Observable<[TimesArticle]>([])
     var sentiment: Property<Sentiment> = Observable<Sentiment>(.unknown)
     var loadingStatus: Property<LoadingStatus> = Observable<LoadingStatus>(.gettingArticles)
-    
+    // swiftlint:disable:next line_length
+    lazy var loadingText: Signal<String, NoError> = combineLatest(self.sentiment, self.loadingStatus, combine: { (sentiment, status) -> String in
+        if sentiment == Sentiment.unknown && status == LoadingStatus.done {
+            return ""
+        }
+        return status.string
+    })
     unowned var delegate: SentimentAnalyserViewModelDelegate
     
     init(withDelegate delegate: SentimentAnalyserViewModelDelegate) {

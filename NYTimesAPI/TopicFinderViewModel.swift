@@ -11,9 +11,10 @@ import ReactiveKit
 import Bond
 import PromiseKit
 
+typealias TopicQuery = String
 protocol TopicFinderActions: class {
     func searchQueryChanged(to string: String)
-    func selectedTag(atIndex index: Int)
+    func selectedTag(atIndex index: Int) -> TopicQuery?
 }
 
 protocol TopicFinderBindables {
@@ -68,13 +69,15 @@ extension TopicFinderViewModel: TopicFinderActions {
         self.currentQuery.value = string
     }
     
-    func selectedTag(atIndex index: Int) {
+    func selectedTag(atIndex index: Int) -> TopicQuery? {
         //lets just ignore this if this method is called with an invalid index
         if !self.currentResults.value.indices.contains(index) {
-            return
+            return nil
         }
         let selectedTag = self.currentResults.value[index]
         self.delegate.selected(tag: selectedTag)
+        self.currentResults.value = []
+        return selectedTag.fullTag
     }
     
 }

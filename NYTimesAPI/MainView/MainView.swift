@@ -12,7 +12,7 @@ import UIKit
 class MainView: UIView {
     
     lazy var topicFinderView: TopicFinderView = TopicFinderView()
-    
+    lazy var sentimentAnalysisView: SentimentAnalysisView = SentimentAnalysisView()
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.didLoad()
@@ -25,6 +25,7 @@ class MainView: UIView {
     
     func didLoad() {
         self.styleView()
+        self.addSubview(self.sentimentAnalysisView)
         self.addSubview(self.topicFinderView)
     }
     
@@ -36,10 +37,16 @@ class MainView: UIView {
         self.topicFinderView.bind(to: viewModel, withActions: actions)
     }
     
+    func bind(to viewModel: SentimentAnalyserBindables, withActions actions: SentimentAnalyserActions) {
+        self.sentimentAnalysisView.bind(to: viewModel, withActions: actions)
+    }
+    
     override func updateConstraints() {
         self.topicFinderView.snp.remakeConstraints({ make in
-            make.top.equalTo(self).offset(UIConstants.padding * 5)
-            make.left.right.equalTo(self)
+            make.edges.equalTo(self.safeAreaLayoutGuide)
+        })
+        self.sentimentAnalysisView.snp.remakeConstraints({ make in
+            make.edges.equalTo(self.safeAreaLayoutGuide)
         })
         super.updateConstraints()
     }

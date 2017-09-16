@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     override func loadView() {
         self.view = self.mainView
         self.mainView.bind(to: self.topicFinderViewModel, withActions: self.topicFinderViewModel)
+        self.mainView.bind(to: self.sentimentAnalysisViewModel, withActions: self.sentimentAnalysisViewModel)
     }
     
 }
