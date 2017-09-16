@@ -28,6 +28,7 @@ extension SentimentPolarityOutput {
 }
 
 extension SentimentAnalyzer {
+    //TODO: this method has its drawbacks, if there are 5 bad sentiments and 5 good it will return whichever sentiment was shown first
     func mostCommonSentiment(from sentiments: [Sentiment]) -> Sentiment {
         var counts: [Sentiment: Int] = [:]
         for sentiment in sentiments {
