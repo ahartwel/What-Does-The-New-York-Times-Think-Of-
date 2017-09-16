@@ -5,6 +5,8 @@
 ### What the app does:
 Allows you to search for a topic, via "Times Tags" and see what the NYTimes writers think of it. It does this through loading of the last 10 articles associated with the tag and preforming sentiment analysis on the headlines and abstracts.
 
+![Gif of app in use](https://github.com/ahartwel/What-Does-The-New-York-Times-Think-Of-/blob/master/appgif.gif?raw=true)
+
 #### CoreML Model Used:
 - [cocoa-ai's Sentiment Polarity CoreML Demo](https://github.com/cocoa-ai/SentimentCoreMLDemo)
 
