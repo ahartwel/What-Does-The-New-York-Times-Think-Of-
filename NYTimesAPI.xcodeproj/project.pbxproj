@@ -141,7 +141,7 @@
 		2CAD4C541F6B5CD9008C737B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2CAD4C571F6B5DC0008C737B /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		2CAD4C5B1F6CA3E9008C737B /* SentimentAnalysisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentAnalysisView.swift; sourceTree = "<group>"; };
-		2CCEE59A1F6D87C80093F870 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = readme.md; path = ../readme.md; sourceTree = "<group>"; };
+		2CCEE59A1F6D87C80093F870 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		2CCEE59C1F6D87F00093F870 /* ReadMeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMeController.swift; sourceTree = "<group>"; };
 		2CCEE5A31F6DA5EF0093F870 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		2CCEE5A41F6DA90B0093F870 /* SentimentAnalyserViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentAnalyserViewTests.swift; sourceTree = "<group>"; };
@@ -326,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				2CCEE5A31F6DA5EF0093F870 /* .swiftlint.yml */,
+				2CCEE59A1F6D87C80093F870 /* readme.md */,
 				EDAE31F939FAC2BA0D92FD68 /* Frameworks */,
 				2CF5F6D41F69C2A900B1A0F7 /* NYTimesAPI */,
 				2CF5F6E91F69C2A900B1A0F7 /* NYTimesAPITests */,
@@ -364,7 +365,6 @@
 				2CF5F6DE1F69C2A900B1A0F7 /* LaunchScreen.storyboard */,
 				2CF5F6D91F69C2A900B1A0F7 /* Main.storyboard */,
 				2CDA61091F6A0E120033D8D8 /* SentimentPolarity.mlmodel */,
-				2CCEE59A1F6D87C80093F870 /* readme.md */,
 			);
 			path = NYTimesAPI;
 			sourceTree = "<group>";

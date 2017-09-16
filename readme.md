@@ -13,7 +13,7 @@ Allows you to search for a topic, via "Times Tags" and see what the NYTimes writ
 ##### Future Considerations:
 - Right now the app only runs analysis on the headlines and abstracts, it would be good to be able to get the full articles to analyze.
 - An explanation of what "(Per)"/"(Des)" annotations are at the end of tags, maybe replacing them with the full words "(Person)"
-
+- Better error handling. Some topics don't return any articles/the nytimes api errors out more ferquently than I would have thought. Right now if an error happens during sentiment analysis because of no articles, it is ignored.
 #### Architectural Decisions:
 - The app is built using a variant of MVVM
     - Even though the topic finder and sentiment analysis results screen are part of the same view controller both sections have their own view models as the functionality is very much seperate
@@ -38,6 +38,14 @@ Allows you to search for a topic, via "Times Tags" and see what the NYTimes writ
 - Common functionality such as listening to keyboard open and close events are defined as protocols with default implementations
     - This way if a view/controller needs to listen to keyboard events you can conform to `KeyboardListener`, call `setUpKeyboardListeners()`, and implement `keyboardOpened(withFrame:)` and  `keyboardClosed()` . Not needing to worry about the notification implementation details over and over
     - As a protocol instead of a class you don't need to worry about multiple inheritance. Anything can implement these functionalities
+- Testing
+    - Tests on the view are done as unit tests using FBSnapshotTestCase and taking snapshots of the views state after certain actions.
+        - It serves as a useful development tool, no need to build your app and navigate to a screen to check out UI Changes
+        - Also lets you know after every feature addition/change if you've accidently changed anything about the layout of the app
+    - Services are tested using stubbed JSON response that return immediately to make sure that api response parsing is done correctly and doesn't break at a later point
+        - The services were also written using these stubs, developing the parsing logic without the need to run the app and make actual network requests
+    - View Models contain most of the business logic and are tested via unit tests in which the services are stubbed and you can decide what objects are returned to them
+    - View controller testing is ignored, they don't do very much in this architecture, especially in an app of this size. It is a good idea to test them, but I've left it out for now.
     
 #### Frameworks Used:
 - Moya - for network requests
