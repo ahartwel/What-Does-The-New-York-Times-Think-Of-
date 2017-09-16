@@ -1,5 +1,5 @@
 //
-//  SentimentAnalyser.swift
+//  SentimentAnalyzer.swift
 //  NYTimesAPI
 //
 //  Created by Alex Hartwell on 9/13/17.
@@ -10,8 +10,8 @@ import Foundation
 import PromiseKit
 import CoreML
 
-protocol SentimentAnalyser {
-    func analyse(timesArticles: [TimesArticle]) -> Promise<[Sentiment]>
+protocol SentimentAnalyzer {
+    func analyze(timesArticles: [TimesArticle]) -> Promise<[Sentiment]>
 }
 
 extension SentimentPolarityOutput {
@@ -27,7 +27,7 @@ extension SentimentPolarityOutput {
     }
 }
 
-extension SentimentAnalyser {
+extension SentimentAnalyzer {
     func mostCommonSentiment(from sentiments: [Sentiment]) -> Sentiment {
         var counts: [Sentiment: Int] = [:]
         for sentiment in sentiments {
@@ -48,7 +48,7 @@ extension SentimentAnalyser {
     }
 }
 
-class SentimentAnalyserImplementation: SentimentAnalyser {
+class SentimentAnalyzerImplementation: SentimentAnalyzer {
     
     //*****using model and some code from https://github.com/cocoa-ai/SentimentCoreMLDemo *******
     var model: SentimentPolarity = SentimentPolarity()
@@ -58,7 +58,7 @@ class SentimentAnalyserImplementation: SentimentAnalyser {
         options: Int(self.options.rawValue)
     )
     
-    func analyse(timesArticle: TimesArticle) -> Sentiment {
+    func analyze(timesArticle: TimesArticle) -> Sentiment {
         let text = timesArticle.headline + " " + timesArticle.snippet
         do {
             let inputFeatures = features(from: text)
@@ -74,12 +74,12 @@ class SentimentAnalyserImplementation: SentimentAnalyser {
         }
     }
     
-    func analyse(timesArticles: [TimesArticle]) -> Promise<[Sentiment]> {
+    func analyze(timesArticles: [TimesArticle]) -> Promise<[Sentiment]> {
         let (promise, fulfill, _) = Promise<[Sentiment]>.pending()
         var sentiments: [Sentiment] = []
         DispatchQueue.global(qos: .background).async {
             sentiments = timesArticles.map({
-                return self.analyse(timesArticle: $0)
+                return self.analyze(timesArticle: $0)
             })
             fulfill(sentiments)
         }
@@ -113,18 +113,18 @@ class SentimentAnalyserImplementation: SentimentAnalyser {
     }
 }
 
-class SentimentAnalyserStub: SentimentAnalyser {
+class SentimentAnalyzerStub: SentimentAnalyzer {
     
-    var calledAnalyse: Bool = false
-    var calledAnalyseWithArticles: [TimesArticle]?
-    var analyseReturn: [Sentiment] = []
-    var delayforAnalyse: Double = 0
-    func analyse(timesArticles: [TimesArticle]) -> Promise<[Sentiment]> {
-        self.calledAnalyse = true
+    var calledAnalyze: Bool = false
+    var calledAnalyzeWithArticles: [TimesArticle]?
+    var analyzeReturn: [Sentiment] = []
+    var delayforAnalyze: Double = 0
+    func analyze(timesArticles: [TimesArticle]) -> Promise<[Sentiment]> {
+        self.calledAnalyze = true
         let (promise, fulfill, _) = Promise<[Sentiment]>.pending()
-        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + self.delayforAnalyse) {
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + self.delayforAnalyze) {
             DispatchQueue.main.async {
-                fulfill(self.analyseReturn)
+                fulfill(self.analyzeReturn)
             }
         }
         return promise

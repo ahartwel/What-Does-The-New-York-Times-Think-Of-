@@ -1,5 +1,5 @@
 //
-//  SentimentAnalyserViewModel.swift
+//  SentimentAnalyzerViewModel.swift
 //  NYTimesAPI
 //
 //  Created by Alex Hartwell on 9/13/17.
@@ -11,7 +11,7 @@ import ReactiveKit
 import Bond
 import PromiseKit
 
-protocol SentimentAnalyserActions {
+protocol SentimentAnalyzerActions {
     func set(tag: TimesTag)
 }
 
@@ -63,25 +63,27 @@ extension LoadingStatus {
         case .gettingArticles:
             return "Getting articles..."
         case .analysingArticles:
-            return "Analysing the articles..."
+            return "Analyzing the articles..."
         case .done:
-            return "Done"
+            return ""
         }
     }
 }
 
-protocol SentimentAnalyserBindables {
+protocol SentimentAnalyzerBindables {
     var currentTag: Observable<TimesTag?> { get }
     var articles: Observable<[TimesArticle]> { get }
     var sentiment: Observable<Sentiment> { get }
+    var sentimentEmojiString: Observable<String> { get }
+    var overalSentimentString: Observable<String> { get }
     var loadingStatus: Observable<LoadingStatus> { get }
     var loadingText: Signal<String, NoError> { get }
 }
 
-protocol SentimentAnalyserViewModelDelegate: class, ErrorPresenter {
+protocol SentimentAnalyzerViewModelDelegate: class, ErrorPresenter {
 }
 
-class SentimentAnalyserViewModel: SentimentAnalyserBindables, TimesArticleRequester, SentimentAnalyserRequester {
+class SentimentAnalyzerViewModel: SentimentAnalyzerBindables, TimesArticleRequester, SentimentAnalyzerRequester {
     
     var disposeBag: DisposeBag = DisposeBag()
     
@@ -89,6 +91,8 @@ class SentimentAnalyserViewModel: SentimentAnalyserBindables, TimesArticleReques
     var currentTag: Observable<TimesTag?> = Observable<TimesTag?>(nil)
     var articles: Property<[TimesArticle]> = Observable<[TimesArticle]>([])
     var sentiment: Property<Sentiment> = Observable<Sentiment>(.unknown)
+    var sentimentEmojiString: Observable<String> = Observable<String>("")
+    var overalSentimentString: Observable<String> = Observable<String>("")
     var loadingStatus: Property<LoadingStatus> = Observable<LoadingStatus>(.gettingArticles)
     // swiftlint:disable:next line_length
     lazy var loadingText: Signal<String, NoError> = combineLatest(self.sentiment, self.loadingStatus, combine: { (sentiment, status) -> String in
@@ -97,9 +101,9 @@ class SentimentAnalyserViewModel: SentimentAnalyserBindables, TimesArticleReques
         }
         return status.string
     })
-    unowned var delegate: SentimentAnalyserViewModelDelegate
+    unowned var delegate: SentimentAnalyzerViewModelDelegate
     
-    init(withDelegate delegate: SentimentAnalyserViewModelDelegate) {
+    init(withDelegate delegate: SentimentAnalyzerViewModelDelegate) {
         self.delegate = delegate
         self.setUpLoaderBinds()
     }
@@ -118,6 +122,8 @@ class SentimentAnalyserViewModel: SentimentAnalyserBindables, TimesArticleReques
             guard let tag = tag else {
                 return
             }
+            self.overalSentimentString.value = Sentiment.unknown.emoji
+            self.sentimentEmojiString.value = ""
             self.loadingStatus.value = .gettingArticles
             self.getArticles(forTag: tag)
         }).dispose(in: self.disposeBag)
@@ -134,18 +140,35 @@ class SentimentAnalyserViewModel: SentimentAnalyserBindables, TimesArticleReques
     }
     
     func preformSentimentAnalysis(onArticles articles: [TimesArticle]) {
-        self.sentimentAnalyser.analyse(timesArticles: articles).then { sentiments -> Void in
-            let sentiment = self.sentimentAnalyser.mostCommonSentiment(from: sentiments)
+        self.sentimentAnalyzer.analyze(timesArticles: articles).then { sentiments -> Void in
+            let sentiment = self.sentimentAnalyzer.mostCommonSentiment(from: sentiments)
             self.sentiment.value = sentiment
-        }.catch { error -> Void in
+            self.animateSentimentsIn(sentiments: sentiments)
+            }.catch { error -> Void in
             self.delegate.show(error: error)
             self.loadingStatus.value = .error
         }
     }
     
+    func animateSentimentsIn(sentiments: [Sentiment]) {
+        self.sentimentEmojiString.value = ""
+        
+        let delayAddition: TimeInterval = 0.1
+        var delay: TimeInterval = 0
+        for sentiment in sentiments {
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                self.sentimentEmojiString.value += sentiment.emoji
+            }
+            delay += delayAddition
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            self.overalSentimentString.value = self.sentiment.value.emoji
+        }
+    }
+    
 }
 
-extension SentimentAnalyserViewModel: SentimentAnalyserActions {
+extension SentimentAnalyzerViewModel: SentimentAnalyzerActions {
     func set(tag: TimesTag) {
         self.currentTag.value = tag
     }

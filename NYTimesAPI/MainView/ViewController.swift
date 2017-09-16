@@ -9,9 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController {
-    lazy var mainView: MainView = MainView()
+    lazy var mainView: MainView = {
+        var view = MainView()
+        view.delegate = self
+        return view
+    }()
     lazy var topicFinderViewModel: TopicFinderViewModel = TopicFinderViewModel(delegate: self)
-    lazy var sentimentAnalysisViewModel: SentimentAnalyserViewModel = SentimentAnalyserViewModel(withDelegate: self)
+    lazy var sentimentAnalysisViewModel: SentimentAnalyzerViewModel = SentimentAnalyzerViewModel(withDelegate: self)
     override func loadView() {
         self.view = self.mainView
         self.mainView.bind(to: self.topicFinderViewModel, withActions: self.topicFinderViewModel)
@@ -26,6 +30,12 @@ extension ViewController: TopicFinderViewModelDelegate {
     }
 }
 
-extension ViewController: SentimentAnalyserViewModelDelegate {
+extension ViewController: SentimentAnalyzerViewModelDelegate {
     
+}
+
+extension ViewController: MainViewDelegate {
+    func tappedHelp() {
+        self.present(UINavigationController(rootViewController: ReadMeController()), animated: true, completion: nil)
+    }
 }

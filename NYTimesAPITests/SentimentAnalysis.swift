@@ -11,24 +11,24 @@ import XCTest
 class SentimentAnalysis: XCTestCase {
     
     func testBadAnalysis() {
-        let analyser = SentimentAnalyserImplementation()
-        let sentiment = analyser.analyse(timesArticle:
+        let analyzer = SentimentAnalyzerImplementation()
+        let sentiment = analyzer.analyze(timesArticle:
             TimesArticle(headline: "Sucks bad horrible", snippet: "worst thing ever")
         )
         XCTAssertEqual(sentiment, .bad)
     }
     
     func testGoodAnalysis() {
-        let analyser = SentimentAnalyserImplementation()
-        let sentiment = analyser.analyse(timesArticle:
+        let analyzer = SentimentAnalyzerImplementation()
+        let sentiment = analyzer.analyze(timesArticle:
             TimesArticle(headline: "Wonderful great awesome", snippet: "happy amazing great")
         )
         XCTAssertEqual(sentiment, .good)
     }
     
     func testNeutralAnalysis() {
-        let analyser = SentimentAnalyserImplementation()
-        let sentiment = analyser.analyse(timesArticle:
+        let analyzer = SentimentAnalyzerImplementation()
+        let sentiment = analyzer.analyze(timesArticle:
             TimesArticle(headline: "ok computer science keyboard", snippet: "floor ceiling ground")
         )
     }

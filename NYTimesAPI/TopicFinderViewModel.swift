@@ -58,7 +58,10 @@ class TopicFinderViewModel: TopicFinderBindables, TimesTagRequester {
         self.timesTagApi.getTags(wihQuery: query).then { tags -> Void in
             self.currentResults.value = tags
         }.catch { error -> Void in
-            self.delegate.show(error: error)
+            if self.currentResults.value.count == 0 { //only show error if no results have been displayed
+                //the nytimes api returns a lot of errors... there is probably a rate limit todo: look into it
+                self.delegate.show(error: error)
+            }
         }
     }
 }

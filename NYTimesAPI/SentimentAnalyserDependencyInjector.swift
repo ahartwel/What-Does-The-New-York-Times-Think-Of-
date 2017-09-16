@@ -1,5 +1,5 @@
 //
-//  SentimentAnalyserDependencyInjector.swift
+//  SentimentAnalyzerDependencyInjector.swift
 //  NYTimesAPI
 //
 //  Created by Alex Hartwell on 9/13/17.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-protocol SentimentAnalyserRequester {
-    var sentimentAnalyser: SentimentAnalyser { get }
+protocol SentimentAnalyzerRequester {
+    var sentimentAnalyzer: SentimentAnalyzer { get }
 }
 
-extension SentimentAnalyserRequester {
-    var sentimentAnalyser: SentimentAnalyser {
-        return mainSentimentAnalyser
+extension SentimentAnalyzerRequester {
+    var sentimentAnalyzer: SentimentAnalyzer {
+        return mainSentimentAnalyzer
     }
 }
 
-fileprivate var mainSentimentAnalyser = SentimentAnalyserImplementation()
+fileprivate var mainSentimentAnalyzer = SentimentAnalyzerImplementation()

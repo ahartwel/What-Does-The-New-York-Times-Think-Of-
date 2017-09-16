@@ -1,5 +1,5 @@
 //
-//  SentimentAnalyserTests.swift
+//  SentimentAnalyzerTests.swift
 //  NYTimesAPI
 //
 //  Created by Alex Hartwell on 9/13/17.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class SentimentAnalyserTests: XCTestCase {
+class SentimentAnalyzerTests: XCTestCase {
     
     func testMostCommentSentiment() {
         let sentiments: [Sentiment] = [
@@ -16,7 +16,7 @@ class SentimentAnalyserTests: XCTestCase {
             .good,
             .bad
         ]
-        let mostCommon = SentimentAnalyserImplementation().mostCommonSentiment(from: sentiments)
+        let mostCommon = SentimentAnalyzerImplementation().mostCommonSentiment(from: sentiments)
         XCTAssertEqual(mostCommon, .good)
     }
     

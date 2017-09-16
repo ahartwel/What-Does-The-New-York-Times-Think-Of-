@@ -15,7 +15,7 @@ class TopicFinderView: UIView {
        var label = UILabel()
         label.numberOfLines = 2
         label.font = UIConstants.headerFont
-        label.text = "What does the NYTimes think of..."
+        label.text = "What does the NYTimes think of"
         return label
     }()
     
@@ -23,7 +23,7 @@ class TopicFinderView: UIView {
         var view = UITextField()
         view.font = UIConstants.subHeaderFont
         view.delegate = self
-        view.placeholder = "Type a topic..."
+        view.placeholder = "Find a topic"
         view.addTarget(self, action: #selector(self.searchViewChanged), for: UIControlEvents.editingChanged)
         return view
     }()
@@ -31,9 +31,12 @@ class TopicFinderView: UIView {
     var resultsTableViewBottomConstraint: Constraint?
     lazy var resultsTableView: UITableView = {
         var tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(TopicTableViewCell.self, forCellReuseIdentifier: TopicTableViewCell.reuseIdentifier ?? "")
         tableView.delegate = self
         tableView.alpha = 0
+        tableView.contentInset = UIEdgeInsets.zero
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.showsVerticalScrollIndicator = false
         return tableView
     }()
     
@@ -60,7 +63,8 @@ class TopicFinderView: UIView {
     func bind(to viewModel: TopicFinderBindables, withActions actions: TopicFinderActions) {
         self.actions = actions
         viewModel.currentResults.bind(to: self.resultsTableView, createCell: { models, indexPath, tableView in
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else {
+            //swiftlint:disable:next line_length
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: TopicTableViewCell.reuseIdentifier ?? "") else {
                 fatalError("Couldn't create cell, something has gone terribly wrong")
             }
             cell.textLabel?.text = models[indexPath.row].fullTag

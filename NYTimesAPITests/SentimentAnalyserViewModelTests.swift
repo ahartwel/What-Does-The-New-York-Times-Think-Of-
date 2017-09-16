@@ -1,5 +1,5 @@
 //
-//  SentimentAnalyserViewModelTests.swift
+//  SentimentAnalyzerViewModelTests.swift
 //  NYTimesAPI
 //
 //  Created by Alex Hartwell on 9/13/17.
@@ -9,27 +9,27 @@
 import XCTest
 
 fileprivate var timesArticleApiStub: TimesArticleAPIStub = TimesArticleAPIStub()
-fileprivate var sentimentAnalyserStub: SentimentAnalyserStub = SentimentAnalyserStub()
-extension SentimentAnalyserViewModel {
+fileprivate var sentimentAnalyzerStub: SentimentAnalyzerStub = SentimentAnalyzerStub()
+extension SentimentAnalyzerViewModel {
     var timesArticleApi: TimesArticleAPI {
         return timesArticleApiStub
     }
-    var sentimentAnalyser: SentimentAnalyser {
-        return sentimentAnalyserStub
+    var sentimentAnalyzer: SentimentAnalyzer {
+        return sentimentAnalyzerStub
     }
 }
 
-class SentimentAnalyserViewModelTests: XCTestCase {
+class SentimentAnalyzerViewModelTests: XCTestCase {
     
-    var viewModel: SentimentAnalyserViewModel?
+    var viewModel: SentimentAnalyzerViewModel?
     // swiftlint:disable:next weak_delegate
-    var viewModelDelegate: SentimentAnalyserViewModelDelegateStub = SentimentAnalyserViewModelDelegateStub()
+    var viewModelDelegate: SentimentAnalyzerViewModelDelegateStub = SentimentAnalyzerViewModelDelegateStub()
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         self.viewModel = nil
-        self.viewModelDelegate = SentimentAnalyserViewModelDelegateStub()
+        self.viewModelDelegate = SentimentAnalyzerViewModelDelegateStub()
     }
     
     override func tearDown() {
@@ -38,7 +38,7 @@ class SentimentAnalyserViewModelTests: XCTestCase {
     }
     
     func testGettingArticlesCalledWhenTagSet() {
-        self.viewModel = SentimentAnalyserViewModel(withDelegate: self.viewModelDelegate)
+        self.viewModel = SentimentAnalyzerViewModel(withDelegate: self.viewModelDelegate)
         timesArticleApiStub.getArticlesDelay = 5
         self.viewModel?.set(tag: TimesTag(fullTag: ""))
         
@@ -48,18 +48,18 @@ class SentimentAnalyserViewModelTests: XCTestCase {
         }
     }
     
-    func testCalledSentimentAnalyserOnArticlesSet() {
-        sentimentAnalyserStub.delayforAnalyse = 5
-        self.viewModel = SentimentAnalyserViewModel(withDelegate: self.viewModelDelegate)
+    func testCalledSentimentAnalyzerOnArticlesSet() {
+        sentimentAnalyzerStub.delayforAnalyze = 5
+        self.viewModel = SentimentAnalyzerViewModel(withDelegate: self.viewModelDelegate)
         self.viewModel?.articles.value = [TimesArticle(headline: "", snippet: "")]
         self.runTestAsync {
             XCTAssertEqual(self.viewModel?.loadingStatus.value, LoadingStatus.analysingArticles)
-            XCTAssertEqual(sentimentAnalyserStub.calledAnalyse, true)
+            XCTAssertEqual(sentimentAnalyzerStub.calledAnalyze, true)
         }
     }
     
     func testLoadingIsSetToDoneOnSentimentSet() {
-        self.viewModel = SentimentAnalyserViewModel(withDelegate: self.viewModelDelegate)
+        self.viewModel = SentimentAnalyzerViewModel(withDelegate: self.viewModelDelegate)
         self.viewModel?.sentiment.value = .good
         self.runTestAsync {
             XCTAssertEqual(self.viewModel?.loadingStatus.value, LoadingStatus.done)

@@ -5,11 +5,13 @@ PODS:
     - ReactiveKit (~> 3.6.0)
   - Diff (0.5.3)
   - Dollar (6.2.0)
+  - Down (0.3.5)
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
+  - ionicons (2.0.3)
   - Moya (8.0.5):
     - Moya/Core (= 8.0.5)
   - Moya/Core (8.0.5):
@@ -35,7 +37,9 @@ PODS:
 DEPENDENCIES:
   - Bond (from `https://github.com/ahartwel/Bond.git`, branch `swift-4`)
   - Dollar
+  - Down (from `https://github.com/iwasrobbed/Down.git`, branch `swift4`)
   - FBSnapshotTestCase
+  - ionicons
   - Moya
   - PromiseKit
   - ReactiveKit (from `https://github.com/ReactiveKit/ReactiveKit.git`, branch `swift-4`)
@@ -47,6 +51,9 @@ EXTERNAL SOURCES:
   Bond:
     :branch: swift-4
     :git: https://github.com/ahartwel/Bond.git
+  Down:
+    :branch: swift4
+    :git: https://github.com/iwasrobbed/Down.git
   ReactiveKit:
     :branch: swift-4
     :git: https://github.com/ReactiveKit/ReactiveKit.git
@@ -55,6 +62,9 @@ CHECKOUT OPTIONS:
   Bond:
     :commit: 01ee29ebdfea330da3f1d50c97461326a9709e15
     :git: https://github.com/ahartwel/Bond.git
+  Down:
+    :commit: cb8b08ffaf25581ea0d20ff400b2d76475ac7f69
+    :git: https://github.com/iwasrobbed/Down.git
   ReactiveKit:
     :commit: 7080488d9bd308dbb5e66cd362f7f77e34eb6f22
     :git: https://github.com/ReactiveKit/ReactiveKit.git
@@ -64,7 +74,9 @@ SPEC CHECKSUMS:
   Bond: 9368988e90600ebd20cb329739fb893987b1c55a
   Diff: befa1d19c32726b2b36ce915d98793e2fbde8dcc
   Dollar: da81aacae30cf7dd059bfdfec709e97f2f0ae2f8
+  Down: 7684dc540ef33f7cfe27b044735d0942581afb2b
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  ionicons: ec1e86e6c3316bd9942a7f024080dd75c70dd6a5
   Moya: c37eec09a098ba9991b5a963b291fc5704bdb9ef
   PromiseKit: 00e8886881f151c7e573d06b437915b0bb2970ec
   ReactiveKit: 15faae1ab1be9604426dc9b0de65a158e9291cd6
@@ -73,6 +85,6 @@ SPEC CHECKSUMS:
   SwiftLint: 3f7543509c931d1291395335f34e245d3919b7f2
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 1bae487379dcda9c131f581a3867444f896d956b
+PODFILE CHECKSUM: ea929ce98dc56fedb6dc7d8bc5719b213769b51c
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.1.1

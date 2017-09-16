@@ -14,6 +14,8 @@ target 'NYTimesAPI' do
   pod 'PromiseKit'
   pod 'SwiftyJSON'
   pod 'SnapKit'
+  pod 'Down', :git => 'https://github.com/iwasrobbed/Down.git', :branch => 'swift4'
+  pod 'ionicons'
   # Pods for NYTimesAPI
 
   target 'NYTimesAPITests' do
@@ -30,7 +32,9 @@ target 'NYTimesAPI' do
   post_install do |installer|
       installer.pods_project.targets.each do |target|
               target.build_configurations.each do |config|
-                  config.build_settings['SWIFT_VERSION'] = '3.2'
+                  if target.name != 'Down'
+                      config.build_settings['SWIFT_VERSION'] = '3.2'
+                  end
               end
       end
   end

@@ -14,7 +14,14 @@ class SentimentAnalysisView: UIView {
     lazy var currentSentiment: UILabel = {
         let view = UILabel()
         view.textAlignment = .center
+        view.font = UIConstants.emojiFontBig
+        return view
+    }()
+    lazy var allSentiments: UILabel = {
+        let view = UILabel()
+        view.textAlignment = .center
         view.font = UIConstants.emojiFont
+        view.numberOfLines = 2
         return view
     }()
     
@@ -33,44 +40,47 @@ class SentimentAnalysisView: UIView {
     }
     
     func didLoad() {
+        self.alpha = 0
+        self.setUpKeyboardListeners()
         self.addSubview(self.loadingStateIndicator)
+        self.addSubview(self.allSentiments)
         self.addSubview(self.currentSentiment)
     }
     
-    func bind(to model: SentimentAnalyserBindables, withActions actions: SentimentAnalyserActions) {
-        model.loadingStatus.observeNext(with: { status in
-            self.currentSentiment.alpha = {
-                switch status {
-                case .done, .error:
-                    return 1
-                default:
-                    return 0.4
-                }
-            }()
-            if status == .done {
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.currentSentiment.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-                    }, completion: { _ in
-                        UIView.animate(withDuration: 0.1, animations: {
-                            self.currentSentiment.transform = CGAffineTransform(scaleX: 0.98, y: 0.8)
-                        }, completion: { _ in
-                            self.currentSentiment.transform = CGAffineTransform.identity
-                        })
-                })
-            }
-        }).dispose(in: self.bag)
+    func bind(to model: SentimentAnalyzerBindables, withActions actions: SentimentAnalyzerActions) {
         model.loadingText.observeNext(with: { status in
             self.loadingStateIndicator.text = status
         }).dispose(in: self.bag)
-        model.sentiment.observeNext(with: { sentiment in
-            self.currentSentiment.text = sentiment.emoji
+        model.sentimentEmojiString.observeNext(with: { string in
+            self.allSentiments.text = string
+        }).dispose(in: self.bag)
+        model.overalSentimentString.observeNext(with: { sentimentEmoji in
+            self.currentSentiment.text = sentimentEmoji
+        }).dispose(in: self.bag)
+        model.overalSentimentString.observeNext(with: { sentiment in
+            //we don't want to animate if the sentiment emoj is the robot
+            if sentiment == Sentiment.unknown.emoji {
+                return
+            }
+            self.currentSentiment.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            UIView.animate(withDuration: 0.4,
+                           delay: 0,
+                           usingSpringWithDamping: 0.1,
+                           initialSpringVelocity: 2,
+                           animations: {
+                            self.currentSentiment.transform = CGAffineTransform.identity
+            })
         }).dispose(in: self.bag)
     }
     
     override func updateConstraints() {
-        self.currentSentiment.snp.remakeConstraints({ make in
+        self.allSentiments.snp.remakeConstraints({ make in
             make.left.right.equalTo(self)
-            make.bottom.equalTo(self).inset(UIScreen.main.bounds.height * 0.2)
+            make.bottom.equalTo(self).inset(UIScreen.main.bounds.height * 0.22)
+        })
+        self.currentSentiment.snp.remakeConstraints({ make in
+            make.bottom.equalTo(self.allSentiments.snp.top).offset(-UIConstants.padding)
+            make.left.right.equalTo(self)
         })
         self.loadingStateIndicator.snp.remakeConstraints { make in
             make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).inset(UIConstants.padding)
@@ -79,4 +89,13 @@ class SentimentAnalysisView: UIView {
         super.updateConstraints()
     }
     
+}
+extension SentimentAnalysisView: KeyboardListener {
+    func onKeyboardOpen(withFrame frame: CGRect) {
+        //if the keyboard is open, you are searching for a topic, hide this view, it isn't needed and looks bad
+        self.alpha = 0
+    }
+    func onKeyboardClose() {
+        self.alpha = 1
+    }
 }

@@ -1,5 +1,5 @@
 //
-//  SentimentAnalyserViewModelDelegateStub.swift
+//  SentimentAnalyzerViewModelDelegateStub.swift
 //  NYTimesAPI
 //
 //  Created by Alex Hartwell on 9/13/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SentimentAnalyserViewModelDelegateStub: SentimentAnalyserViewModelDelegate {
+class SentimentAnalyzerViewModelDelegateStub: SentimentAnalyzerViewModelDelegate {
     
     var calledShowError: Bool = false
     var calledShowErrorWithError: Error?
