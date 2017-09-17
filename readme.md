@@ -6,7 +6,7 @@
 Allows you to search for a topic and see what the NYTimes writers think of it.
 #### How it does it:
 1. Searches for topics via the `Times Tag API`
-2. Pulls the last 10 articles associated the the selected tag via the `Article Search API`.
+2. Pulls the last 10 articles associated with the the selected tag via the `Article Search API`.
 3. Runs sentiment analysis on the articles using CoreML.
 4. Displays the results.
 
@@ -59,12 +59,12 @@ Allows you to search for a topic and see what the NYTimes writers think of it.
     - As a protocol instead of a class you don't need to worry about multiple inheritance. Anything can implement these functionalities just by conforming.
 
 #### Testing
-- Testing the view is done via unit tests using FBSnapshotTestCase. Snapshots of the view's state are checked after every action you can take.
-    - Doing view testing this way serves as a useful development tool, no need to build your app and navigate to a screen to check out UI Changes
+- View testing is done via unit tests using FBSnapshotTestCase. Snapshots of the view's state are checked after every action you can take.
+    - Doing view testing this way serves as a useful development tool, no need to build your app and navigate to a screen/state to check out UI Changes
     - Also lets you know after every feature addition/change if you've accidently changed anything about the layout of the app
-- Services are tested using stubbed JSON response that return immediately to make sure that api response parsing is done correctly and doesn't break at a later point
-    - This also aides you during the development lifecycle as you don't need to run your app to test parsing logic, just run a unit test with stubbed JSON
-- View Models contain most of the business logic and are tested via unit tests in which the services are stubbed and you decide what objects are returned from them.
+- Services are tested using stubbed JSON responses that return immediately.
+    - This also helps you during development as you don't need to run your app to test API parsing, just run a unit test that calls the service with a stubbed API response.
+- View Models contain most of the business logic and are tested with unit tests in which the services, delegates, and other dependencies are stubbed and you decide what objects are returned from them.
     
 #### Frameworks Used:
 - Moya - for network requests
