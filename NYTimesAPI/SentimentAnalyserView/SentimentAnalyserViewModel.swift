@@ -74,10 +74,10 @@ protocol SentimentAnalyzerBindables {
     var currentTag: Observable<TimesTag?> { get }
     var articles: Observable<[TimesArticle]> { get }
     var sentiment: Observable<Sentiment> { get }
-    var sentimentEmojiString: Observable<String> { get }
-    var overalSentimentString: Observable<String> { get }
+    var allSentimentsString: Observable<String> { get }
+    var overallSentimentString: Observable<String> { get }
     var loadingStatus: Observable<LoadingStatus> { get }
-    var loadingText: Signal<String, NoError> { get }
+    var loadingStatusText: Signal<String, NoError> { get }
 }
 
 protocol SentimentAnalyzerViewModelDelegate: class, ErrorPresenter {
@@ -91,11 +91,12 @@ class SentimentAnalyzerViewModel: SentimentAnalyzerBindables, TimesArticleReques
     var currentTag: Observable<TimesTag?> = Observable<TimesTag?>(nil)
     var articles: Property<[TimesArticle]> = Observable<[TimesArticle]>([])
     var sentiment: Property<Sentiment> = Observable<Sentiment>(.unknown)
-    var sentimentEmojiString: Observable<String> = Observable<String>("")
-    var overalSentimentString: Observable<String> = Observable<String>("")
+    var allSentimentsString: Observable<String> = Observable<String>("")
+    var overallSentimentString: Observable<String> = Observable<String>("")
     var loadingStatus: Property<LoadingStatus> = Observable<LoadingStatus>(.gettingArticles)
     // swiftlint:disable:next line_length
-    lazy var loadingText: Signal<String, NoError> = combineLatest(self.sentiment, self.loadingStatus, combine: { (sentiment, status) -> String in
+    lazy var loadingStatusText: Signal<String, NoError> = combineLatest(self.sentiment, self.loadingStatus,
+                                                                        combine: { (sentiment, status) -> String in
         if sentiment == Sentiment.unknown && status == LoadingStatus.done {
             return ""
         }
@@ -108,6 +109,7 @@ class SentimentAnalyzerViewModel: SentimentAnalyzerBindables, TimesArticleReques
         self.setUpLoaderBinds()
     }
     
+    /// Set up binds that handle setting loading status and calling the next step in the analysis process
     func setUpLoaderBinds() {
         self.sentiment.observeNext(with: { _ in
             self.loadingStatus.value = .done
@@ -122,8 +124,8 @@ class SentimentAnalyzerViewModel: SentimentAnalyzerBindables, TimesArticleReques
             guard let tag = tag else {
                 return
             }
-            self.overalSentimentString.value = Sentiment.unknown.emoji
-            self.sentimentEmojiString.value = ""
+            self.overallSentimentString.value = Sentiment.unknown.emoji
+            self.allSentimentsString.value = ""
             self.loadingStatus.value = .gettingArticles
             self.getArticles(forTag: tag)
         }).dispose(in: self.disposeBag)
@@ -150,19 +152,23 @@ class SentimentAnalyzerViewModel: SentimentAnalyzerBindables, TimesArticleReques
         }
     }
     
+    // swiftlint:disable:next line_length
+    /// Adds the emoji associated with each sentiment to the sentimentEmojiString one by one, with a delay between each addition
+    ///
+    /// - Parameter sentiments: the sentiments to add to the overallSentimentString
     func animateSentimentsIn(sentiments: [Sentiment]) {
-        self.sentimentEmojiString.value = ""
+        self.allSentimentsString.value = ""
         
         let delayAddition: TimeInterval = 0.1
         var delay: TimeInterval = 0
         for sentiment in sentiments {
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-                self.sentimentEmojiString.value += sentiment.emoji
+                self.allSentimentsString.value += sentiment.emoji
             }
             delay += delayAddition
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-            self.overalSentimentString.value = self.sentiment.value.emoji
+            self.overallSentimentString.value = self.sentiment.value.emoji
         }
     }
     

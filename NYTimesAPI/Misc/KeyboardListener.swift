@@ -10,11 +10,13 @@ import Foundation
 import UIKit
 
 protocol KeyboardListener {
+    /// Sets up notification handlers for keyboardWillShow and keyboardWillHide, those handlers will call onKeyboardOpen and onKeyboardClose
     func setUpKeyboardListeners()
     func onKeyboardOpen(withFrame frame: CGRect)
     func onKeyboardClose()
 }
 
+//set up default implementation of setUpKeyboardListeners for all UIViews
 extension KeyboardListener where Self: UIView {
     func setUpKeyboardListeners() {
         NotificationCenter.default.reactive.notification(name: .UIKeyboardWillShow).observeNext(with: { notification in

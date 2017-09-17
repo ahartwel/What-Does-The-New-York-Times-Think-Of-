@@ -56,7 +56,7 @@ class MainView: UIView {
         self.sentimentAnalysisView.bind(to: viewModel, withActions: actions)
     }
     
-    @objc func didTapHelp() {
+    @objc private func didTapHelp() {
         self.delegate?.tappedHelp()
     }
     

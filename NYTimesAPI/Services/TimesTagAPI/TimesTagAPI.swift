@@ -17,9 +17,7 @@ protocol TimesTagAPI {
 
 class TimesTagApiImplementation: TimesTagAPI {
     
-    lazy var baseService: BaseService<TimesTagAPIDefinition> = {
-        return BaseService<TimesTagAPIDefinition>()
-    }()
+    lazy var baseService: BaseService<TimesTagAPIDefinition> = BaseService<TimesTagAPIDefinition>()
     
     func getTags(wihQuery query: String) -> Promise<[TimesTag]> {
         return self.baseService.makeRequest(target: .getTags(query: query)).then { json -> [TimesTag] in

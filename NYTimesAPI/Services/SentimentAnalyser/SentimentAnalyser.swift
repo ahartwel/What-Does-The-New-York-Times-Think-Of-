@@ -43,7 +43,7 @@ extension SentimentAnalyzer {
 
 class SentimentAnalyzerImplementation: SentimentAnalyzer {
     
-    //*****using model and some code from https://github.com/cocoa-ai/SentimentCoreMLDemo *******
+    //***** using mlmodel and some code from https://github.com/cocoa-ai/SentimentCoreMLDemo *******
     private var model: SentimentPolarity = SentimentPolarity()
     private let options: NSLinguisticTagger.Options = [.omitWhitespace, .omitPunctuation, .omitOther]
     private var tagger: NSLinguisticTagger {

@@ -36,6 +36,8 @@ extension MainViewController: SentimentAnalyzerViewModelDelegate {
 
 extension MainViewController: MainViewDelegate {
     func tappedHelp() {
-        self.present(UINavigationController(rootViewController: ReadMeController()), animated: true, completion: nil)
+        let readmeController = ReadMeController()
+        let navigationController = UINavigationController(rootViewController: readmeController)
+        self.present(navigationController, animated: true, completion: nil)
     }
 }

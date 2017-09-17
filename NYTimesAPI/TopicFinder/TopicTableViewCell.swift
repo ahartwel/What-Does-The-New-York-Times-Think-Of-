@@ -30,6 +30,10 @@ class TopicTableViewCell: UITableViewCell {
         self.separatorInset = UIEdgeInsets.zero
         self.setNeedsUpdateConstraints()
     }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.setNeedsUpdateConstraints()
+    }
     override func updateConstraints() {
         self.textLabel?.snp.remakeConstraints({ make in
             make.left.right.equalTo(self.contentView)

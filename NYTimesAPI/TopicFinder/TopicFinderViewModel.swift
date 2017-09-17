@@ -13,7 +13,7 @@ import PromiseKit
 
 typealias TopicQuery = String
 protocol TopicFinderActions: class {
-    func searchQueryChanged(to string: String)
+    func searchQueryChanged(to string: TopicQuery)
     func selectedTag(atIndex index: Int) -> TopicQuery?
 }
 
@@ -44,13 +44,13 @@ class TopicFinderViewModel: TopicFinderBindables, TimesTagRequester {
         self.setUpCurrentQueryListeners()
     }
     
-    func setUpCurrentQueryListeners() {
+    private func setUpCurrentQueryListeners() {
         self.currentQuery.observeNext(with: { query -> Void in
-            self.makeApiQuery(with: query)
+            self.findTimesTags(with: query)
         }).dispose(in: self.bag)
     }
     
-    func makeApiQuery(with query: String) {
+    private func findTimesTags(with query: String) {
         if query.isEmpty {
             self.currentResults.value = []
             return

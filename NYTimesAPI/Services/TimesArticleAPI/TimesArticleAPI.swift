@@ -17,9 +17,7 @@ protocol TimesArticleAPI {
 
 class TimesArticleAPIImplementation: TimesArticleAPI {
     
-    lazy var baseService: BaseService<TimesArticleAPIDefinition> = {
-        return BaseService<TimesArticleAPIDefinition>()
-    }()
+    lazy var baseService: BaseService<TimesArticleAPIDefinition> = BaseService<TimesArticleAPIDefinition>()
     
     func getArticles(fromTag tag: TimesTag) -> Promise<[TimesArticle]> {
         return self.baseService.makeRequest(target: .getArticles(byTag: tag)).then { json -> [TimesArticle] in

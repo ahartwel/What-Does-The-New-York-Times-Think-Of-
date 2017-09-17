@@ -10,8 +10,11 @@ import Foundation
 import UIKit
 
 class UIConstants {
+    // size constants
     static var padding: CGFloat = 16
     static var resultsTableHeight: CGFloat = UIScreen.main.bounds.height * 0.3
+    
+    // font constants
     static var emojiFont: UIFont = UIFont.systemFont(ofSize: 65)
     static var emojiFontBig: UIFont = UIFont.systemFont(ofSize: 120)
     static var headerFont: UIFont = UIFont.boldSystemFont(ofSize: 36)

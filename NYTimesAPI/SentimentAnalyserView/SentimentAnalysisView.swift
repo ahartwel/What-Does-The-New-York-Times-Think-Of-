@@ -11,13 +11,13 @@ import UIKit
 
 class SentimentAnalysisView: UIView {
     
-    lazy var currentSentiment: UILabel = {
+    lazy var overallSentimentLabel: UILabel = {
         let view = UILabel()
         view.textAlignment = .center
         view.font = UIConstants.emojiFontBig
         return view
     }()
-    lazy var allSentiments: UILabel = {
+    lazy var allSentimentsLabel: UILabel = {
         let view = UILabel()
         view.textAlignment = .center
         view.font = UIConstants.emojiFont
@@ -43,43 +43,47 @@ class SentimentAnalysisView: UIView {
         self.alpha = 0
         self.setUpKeyboardListeners()
         self.addSubview(self.loadingStateIndicator)
-        self.addSubview(self.allSentiments)
-        self.addSubview(self.currentSentiment)
+        self.addSubview(self.allSentimentsLabel)
+        self.addSubview(self.overallSentimentLabel)
     }
     
     func bind(to model: SentimentAnalyzerBindables, withActions actions: SentimentAnalyzerActions) {
-        model.loadingText.observeNext(with: { status in
+        model.loadingStatusText.observeNext(with: { status in
             self.loadingStateIndicator.text = status
         }).dispose(in: self.bag)
-        model.sentimentEmojiString.observeNext(with: { string in
-            self.allSentiments.text = string
+        model.allSentimentsString.observeNext(with: { string in
+            self.allSentimentsLabel.text = string
         }).dispose(in: self.bag)
-        model.overalSentimentString.observeNext(with: { sentimentEmoji in
-            self.currentSentiment.text = sentimentEmoji
+        model.overallSentimentString.observeNext(with: { sentimentEmoji in
+            self.overallSentimentLabel.text = sentimentEmoji
         }).dispose(in: self.bag)
-        model.overalSentimentString.observeNext(with: { sentiment in
+        model.overallSentimentString.observeNext(with: { sentiment in
             //we don't want to animate if the sentiment emoj is the robot
             if sentiment == Sentiment.unknown.emoji {
                 return
             }
-            self.currentSentiment.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-            UIView.animate(withDuration: 0.4,
-                           delay: 0,
-                           usingSpringWithDamping: 0.1,
-                           initialSpringVelocity: 2,
-                           animations: {
-                            self.currentSentiment.transform = CGAffineTransform.identity
-            })
+            self.animateOverallSentimentChange()
         }).dispose(in: self.bag)
     }
     
+    fileprivate func animateOverallSentimentChange() {
+        self.overallSentimentLabel.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        UIView.animate(withDuration: 0.4,
+                       delay: 0,
+                       usingSpringWithDamping: 0.1,
+                       initialSpringVelocity: 2,
+                       animations: {
+                        self.overallSentimentLabel.transform = CGAffineTransform.identity
+        })
+    }
+    
     override func updateConstraints() {
-        self.allSentiments.snp.remakeConstraints({ make in
+        self.allSentimentsLabel.snp.remakeConstraints({ make in
             make.left.right.equalTo(self)
             make.bottom.equalTo(self).inset(UIScreen.main.bounds.height * 0.22)
         })
-        self.currentSentiment.snp.remakeConstraints({ make in
-            make.bottom.equalTo(self.allSentiments.snp.top).offset(-UIConstants.padding)
+        self.overallSentimentLabel.snp.remakeConstraints({ make in
+            make.bottom.equalTo(self.allSentimentsLabel.snp.top).offset(-UIConstants.padding)
             make.left.right.equalTo(self)
         })
         self.loadingStateIndicator.snp.remakeConstraints { make in

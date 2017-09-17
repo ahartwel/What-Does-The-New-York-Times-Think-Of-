@@ -95,11 +95,13 @@ class TopicFinderView: UIView {
 
 extension TopicFinderView: KeyboardListener {
     func onKeyboardClose() {
+        // the keyboard closes when a result is selected, so lets hide the results table view
         self.resultsTableView.alpha = 0
     }
     
     func onKeyboardOpen(withFrame frame: CGRect) {
         self.resultsTableView.alpha = 1
+        // make sure the results table view stops at the keyboard
         self.resultsTableViewBottomConstraint?.update(inset: frame.height)
         self.setNeedsUpdateConstraints()
     }
@@ -113,8 +115,8 @@ extension TopicFinderView: UITextFieldDelegate {
 
 extension TopicFinderView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.searchView.resignFirstResponder()
         if let tagString = self.actions?.selectedTag(atIndex: indexPath.row) {
+            self.searchView.resignFirstResponder()
             self.searchView.text = tagString
         }
     }
