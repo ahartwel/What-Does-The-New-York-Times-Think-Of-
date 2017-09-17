@@ -7,13 +7,7 @@
 //
 
 import XCTest
-
-fileprivate var timesTagApiStub = TimesTagApiStub()
-extension TopicFinderViewModel {
-    var timesTagApi: TimesTagAPI {
-        return timesTagApiStub
-    }
-}
+@testable import NYTimesAPI
 
 class TopicFinderViewModelTests: XCTestCase {
     
@@ -26,13 +20,13 @@ class TopicFinderViewModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        timesTagApiStub = TimesTagApiStub()
+        TestingStubs.timesTagApiStub = TimesTagApiStub()
         self.viewModelDelegateStub = TopicFinderViewModelDelegateStub()
         self.viewModel = TopicFinderViewModel(delegate: self.viewModelDelegateStub)
     }
     
     func testChangeQueryToNonEmptyString() {
-        timesTagApiStub.getTagsReturnValue = [
+        TestingStubs.timesTagApiStub.getTagsReturnValue = [
             TimesTag(fullTag: "test"),
             TimesTag(fullTag: "test"),
             TimesTag(fullTag: "test")
@@ -52,7 +46,7 @@ class TopicFinderViewModelTests: XCTestCase {
     }
     
     func testApiError() {
-        timesTagApiStub.getTagsReturnError = NYTimesError(title: "test", description: "testing")
+        TestingStubs.timesTagApiStub.getTagsReturnError = NYTimesError(title: "test", description: "testing")
         self.actions.searchQueryChanged(to: "123")
         self.runTestAsync {
             XCTAssertEqual(self.viewModelDelegateStub.calledShowError, true)

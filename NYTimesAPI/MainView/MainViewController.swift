@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     lazy var mainView: MainView = {
         var view = MainView()
         view.delegate = self
@@ -24,17 +24,17 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: TopicFinderViewModelDelegate {
+extension MainViewController: TopicFinderViewModelDelegate {
     func selected(tag: TimesTag) {
         self.sentimentAnalysisViewModel.set(tag: tag)
     }
 }
 
-extension ViewController: SentimentAnalyzerViewModelDelegate {
-    
+extension MainViewController: SentimentAnalyzerViewModelDelegate {
+    //this is empty because the only method implemented on it has a default implementation for UIViewControllers
 }
 
-extension ViewController: MainViewDelegate {
+extension MainViewController: MainViewDelegate {
     func tappedHelp() {
         self.present(UINavigationController(rootViewController: ReadMeController()), animated: true, completion: nil)
     }

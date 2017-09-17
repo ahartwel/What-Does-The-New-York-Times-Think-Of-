@@ -12,10 +12,3 @@ struct TimesArticle {
     var headline: String
     var snippet: String
 }
-
-extension TimesArticle {
-    func getSentiment() -> Sentiment {
-        //TODO: update this to use CoreML
-        return Sentiment.good
-    }
-}

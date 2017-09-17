@@ -13,22 +13,14 @@ import CoreML
 protocol SentimentAnalyzer {
     func analyze(timesArticles: [TimesArticle]) -> Promise<[Sentiment]>
 }
-
-extension SentimentPolarityOutput {
-    var sentiment: Sentiment {
-        switch self.classLabel {
-        case "Pos":
-            return .good
-        case "Neg":
-            return .bad
-        default:
-            return .neutral
-        }
-    }
-}
-
+// Default Implementation of SentimentAnalyzer
 extension SentimentAnalyzer {
+    // swiftlint:disable:next line_length
     //TODO: this method has its drawbacks, if there are 5 bad sentiments and 5 good it will return whichever sentiment was shown first
+    /// Get the sentiment that occurs most often in an array, [.good,.good,.bad] will return .good
+    ///
+    /// - Parameter sentiments: an array of sentiments to check
+    /// - Returns: the sentiment that occurs the most times in the array
     func mostCommonSentiment(from sentiments: [Sentiment]) -> Sentiment {
         var counts: [Sentiment: Int] = [:]
         for sentiment in sentiments {
@@ -52,12 +44,14 @@ extension SentimentAnalyzer {
 class SentimentAnalyzerImplementation: SentimentAnalyzer {
     
     //*****using model and some code from https://github.com/cocoa-ai/SentimentCoreMLDemo *******
-    var model: SentimentPolarity = SentimentPolarity()
+    private var model: SentimentPolarity = SentimentPolarity()
     private let options: NSLinguisticTagger.Options = [.omitWhitespace, .omitPunctuation, .omitOther]
-    private lazy var tagger: NSLinguisticTagger = .init(
+    private var tagger: NSLinguisticTagger {
+        return NSLinguisticTagger.init(
         tagSchemes: NSLinguisticTagger.availableTagSchemes(forLanguage: "en"),
         options: Int(self.options.rawValue)
-    )
+        )
+    }
     
     func analyze(timesArticle: TimesArticle) -> Sentiment {
         let text = timesArticle.headline + " " + timesArticle.snippet
@@ -89,7 +83,7 @@ class SentimentAnalyzerImplementation: SentimentAnalyzer {
     
     func features(from text: String) -> [String: Double] {
         var wordCounts = [String: Double]()
-        
+        let tagger = self.tagger
         tagger.string = text
         let range = NSRange(location: 0, length: text.utf16.count)
         
@@ -114,21 +108,15 @@ class SentimentAnalyzerImplementation: SentimentAnalyzer {
     }
 }
 
-class SentimentAnalyzerStub: SentimentAnalyzer {
-    
-    var calledAnalyze: Bool = false
-    var calledAnalyzeWithArticles: [TimesArticle]?
-    var analyzeReturn: [Sentiment] = []
-    var delayforAnalyze: Double = 0
-    func analyze(timesArticles: [TimesArticle]) -> Promise<[Sentiment]> {
-        self.calledAnalyze = true
-        let (promise, fulfill, _) = Promise<[Sentiment]>.pending()
-        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + self.delayforAnalyze) {
-            DispatchQueue.main.async {
-                fulfill(self.analyzeReturn)
-            }
+extension SentimentPolarityOutput {
+    var sentiment: Sentiment {
+        switch self.classLabel {
+        case "Pos":
+            return .good
+        case "Neg":
+            return .bad
+        default:
+            return .neutral
         }
-        return promise
     }
-    
 }

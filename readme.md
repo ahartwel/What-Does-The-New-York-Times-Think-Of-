@@ -3,55 +3,74 @@
 ## An exploration of the NYTimes API and CoreML Sentiment Analysis
 
 ### What the app does:
-Allows you to search for a topic, via "Times Tags" and see what the NYTimes writers think of it. It does this through loading of the last 10 articles associated with the tag and preforming sentiment analysis on the headlines and abstracts.
+Allows you to search for a topic and see what the NYTimes writers think of it.
+#### How it does it:
+1. Searches for topics via the `Times Tag API`
+2. Pulls the last 10 articles associated the the selected tag via the `Article Search API`.
+3. Runs sentiment analysis on the articles using CoreML.
+4. Displays the results.
 
 ![Gif of app in use](https://github.com/ahartwel/What-Does-The-New-York-Times-Think-Of-/blob/master/appgif.gif?raw=true)
 
 #### CoreML Model Used:
 - [cocoa-ai's Sentiment Polarity CoreML Demo](https://github.com/cocoa-ai/SentimentCoreMLDemo)
 
-##### Future Considerations:
+### Future Considerations:
 - Right now the app only runs analysis on the headlines and abstracts, it would be good to be able to get the full articles to analyze.
-- An explanation of what "(Per)"/"(Des)" annotations are at the end of tags, maybe replacing them with the full words "(Person)"
-- Better error handling. Some topics don't return any articles/the nytimes api errors out more ferquently than I would have thought. Right now if an error happens during sentiment analysis because of no articles, it is ignored.
-#### Architectural Decisions:
-- The app is built using a variant of MVVM
-    - Even though the topic finder and sentiment analysis results screen are part of the same view controller both sections have their own view models as the functionality is very much seperate
-    - **This variant has the View Model broken up into 3 parts**:
-        - The View Model's bindable properties: the observables that are passed into the view that the view can observe and update it's layout based on
-        - The View Model's action: actions that can be called on the view model, usually hooked up to button taps/ user interaction
-        - The View Model's implementation: where all the business logic happens, actions are implemented, services are called, and bindables are set/updated
-    - Each View Model has a delegate for when it needs to communicate with the outside world, such as when a "Times Tag" is selected and new articles need to be fetched and analyzed.
-        - The delegate conforms to the `ErrorPresenter` protocol which allows you to pass any errors to the view model's delegate and the delegate's implementation can decide how to show it
-        - View Controllers are usually the implementor of the View Model's delegate, as the most common action taken from these delegates is presenting new Controllers
-- When a service is created a file private global instance of them is created.
-    - A dependency injector protocol is then created which adds a computed property to the implementer which gains access to the global instance, through a default implementation
-        - This way, when testing a class that conforms to the injector protocol you can override the default implementation and return a stub instead of the private global instance
-        - You get the ease of use of singletons without the testability nightmares
-        - If you want a class to gain access to a service you can just tell it to implement the injector protocol and it will automatically gain access to a shared instance of it
-            - No more passing services deep through the app
+- An explanation of what "(Per)"/"(Des)" annotations are at the end of tags, maybe replacing them with the full words "(Person)" or removing them from the UI.
+- Better error handling. Some topics don't return any articles and right now if an error happens during sentiment analysis because of no articles, it is ignored.
 
-- Views are defined in code and constraints are written using SnapKit
-    - In my opinion, writing views in code is clearer than using Story Boards, all of your properties are clearly visible in one location, no need to hunt through menus to find and set them
-    - Merge conflicts are much easier to deal with when using code. Autolayout XML is not easy to read
-- UI Constants such as fonts and padding values are static properties on a `UIConstants` class
+### Architectural Decisions:
+#### MVVM and View Models
+- Even though the Topic Finder and Sentiment Analysis Results screen are part of the same view both sections have their own view models as their functionality is very much seperate.
+- A View Model is broken up into 3 parts:
+    - A bindable properties protocol:
+        - The bindables protocol is a collection of Observables that represent view state.
+        - It is passed into the view and the view observes changes to the properties and updates accordingly.
+    - An actions protocol:
+        - The actions protocol is a collection of methods that can be called on the view model.
+        - Usually each action correlates to user input.
+        - This is passed into the view and stored. It is basically a view's delegate.
+    - And the actual implementation:
+        - A class that conforms to both the bindable protocol and the actions protocol.
+        - Will implement the business logic of the view.
+        - Call services and makes updates to data as needed.
+- Each view model has a delegate for when it needs to talk to the outside world.
+    - The implementor of this delegate is usually the View Controller as the view model usually only needs to talk to the outside world to push a new view controller or dismiss itself.
+    - The delegate will also normally conform to the `ErrorPresenter` protocol.
+        - This protocol, when implemented by a view controller, gets automatic behaivor for presenting a `UIAlertController` constructed by an `Error` instance.
+
+#### Services
+- When a service is created a stub is also created.
+- A `{{ServiceName}}Requester` protocol is defined.
+    - This protocol serves as a dependency injector. View Models will conform the the  `{{ServiceName}}Requester` protocol and depending on which build configuration is compiled the conformer will automatically gain access to a global shared implementation of the service or a global shared stub.
+    - The `Requester` protocol gives you the ease of use of singletons (you don't have to worry about passing the service around in your app), without testability nightmares. 	- When you run your app's tests, every view model will automatically point to the stubbed version of your services and you can control what they return (ex. `ServiceStubs.timesTagApiStub.getTagsReturn = stubbedTagsResponse`).
+
+#### Views
+- Views are defined in code with constraints written using SnapKit
+    - Storyboards cause headaches with merge conflicts and it becomes harder to find what properties are set on views.
+    - All subviews are defined using lazy closures so all view set up and styling is in one place and easy to find.
+- UIConstants such as fonts and padding values are static properties on a `UIConstants` class.
+
+#### Commonly Used Functionality
 - Common functionality such as listening to keyboard open and close events are defined as protocols with default implementations
-    - This way if a view/controller needs to listen to keyboard events you can conform to `KeyboardListener`, call `setUpKeyboardListeners()`, and implement `keyboardOpened(withFrame:)` and  `keyboardClosed()` . Not needing to worry about the notification implementation details over and over
-    - As a protocol instead of a class you don't need to worry about multiple inheritance. Anything can implement these functionalities
-- Testing
-    - Tests on the view are done as unit tests using FBSnapshotTestCase and taking snapshots of the views state after certain actions.
-        - It serves as a useful development tool, no need to build your app and navigate to a screen to check out UI Changes
-        - Also lets you know after every feature addition/change if you've accidently changed anything about the layout of the app
-    - Services are tested using stubbed JSON response that return immediately to make sure that api response parsing is done correctly and doesn't break at a later point
-        - The services were also written using these stubs, developing the parsing logic without the need to run the app and make actual network requests
-    - View Models contain most of the business logic and are tested via unit tests in which the services are stubbed and you can decide what objects are returned to them
-    - View controller testing is ignored, they don't do very much in this architecture, especially in an app of this size. It is a good idea to test them, but I've left it out for now.
+    - This way if a view/controller needs to listen to keyboard events you can conform to `KeyboardListener`, call `setUpKeyboardListeners()`, and implement `keyboardOpened(withFrame:)` and  `keyboardClosed()`. Not needing to worry about the notification implementation details over and over.
+        - ReactiveKit and dispose bags automatically take care of unregisterting the notifications associated with NotificationCenter.
+    - As a protocol instead of a class you don't need to worry about multiple inheritance. Anything can implement these functionalities just by conforming.
+
+#### Testing
+- Testing the view is done via unit tests using FBSnapshotTestCase. Snapshots of the view's state are checked after every action you can take.
+    - Doing view testing this way serves as a useful development tool, no need to build your app and navigate to a screen to check out UI Changes
+    - Also lets you know after every feature addition/change if you've accidently changed anything about the layout of the app
+- Services are tested using stubbed JSON response that return immediately to make sure that api response parsing is done correctly and doesn't break at a later point
+    - This also aides you during the development lifecycle as you don't need to run your app to test parsing logic, just run a unit test with stubbed JSON
+- View Models contain most of the business logic and are tested via unit tests in which the services are stubbed and you decide what objects are returned from them.
     
 #### Frameworks Used:
 - Moya - for network requests
 - ReactiveKit/Bond - for view/viewmodel binding and functional reactive programming
-- PromiseKit
-- SwiftyJSON
+- PromiseKit - provides better syntax for async methods than closures
+- SwiftyJSON - easier JSON parsing
 - SnapKit - for setting up constraints
 - Down - for displaying Markdown files (this about page is the readme for the git repo)
 - ionicons

@@ -8,6 +8,7 @@
 
 import XCTest
 import FBSnapshotTestCase
+@testable import NYTimesAPI
 
 class TopicSearchViewTest: FBSnapshotTestCase {
     
@@ -29,7 +30,7 @@ class TopicSearchViewTest: FBSnapshotTestCase {
         let view = TopicFinderView()
         view.frame = CGRect(x: 0, y: 0, width: 400, height: 500)
         let viewModel = TopicFinderViewModel(delegate: TopicFinderViewModelDelegateStub())
-        view.bind(to: viewModel, withActions: viewModel)
+        view.bind(to: viewModel.bindables, withActions: viewModel.actions)
         view.onKeyboardOpen(withFrame: CGRect.zero)
         viewModel.currentResults.value = [
             TimesTag(fullTag: "testing"),
@@ -51,7 +52,7 @@ class TopicSearchViewTest: FBSnapshotTestCase {
         let viewModelDelegate = TopicFinderViewModelDelegateStub()
         view.frame = CGRect(x: 0, y: 0, width: 400, height: 500)
         let viewModel = TopicFinderViewModel(delegate: viewModelDelegate)
-        view.bind(to: viewModel, withActions: viewModel)
+        view.bind(to: viewModel.bindables, withActions: viewModel.actions)
         view.onKeyboardOpen(withFrame: CGRect.zero) //make sure the view gets laid out properly
         viewModel.currentResults.value = [
             TimesTag(fullTag: "testing"),

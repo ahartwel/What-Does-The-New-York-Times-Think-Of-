@@ -8,7 +8,7 @@
 
 import XCTest
 import SwiftyJSON
-
+@testable import NYTimesAPI
 class ArticleAPIParsing: XCTestCase {
     
     func testParsingOfResponse() {

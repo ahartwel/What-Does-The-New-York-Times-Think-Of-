@@ -64,6 +64,12 @@ class TopicFinderViewModel: TopicFinderBindables, TimesTagRequester {
             }
         }
     }
+    var bindables: TopicFinderBindables {
+        return self
+    }
+    var actions: TopicFinderActions {
+        return self
+    }
 }
 
 extension TopicFinderViewModel: TopicFinderActions {

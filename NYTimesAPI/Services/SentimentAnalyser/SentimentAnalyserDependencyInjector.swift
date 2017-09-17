@@ -14,8 +14,12 @@ protocol SentimentAnalyzerRequester {
 
 extension SentimentAnalyzerRequester {
     var sentimentAnalyzer: SentimentAnalyzer {
-        return mainSentimentAnalyzer
+        #if TESTING
+            return TestingStubs.sentimentAnalyzerStub
+        #else
+            return mainSentimentAnalyzer
+        #endif
     }
 }
 
-fileprivate var mainSentimentAnalyzer = SentimentAnalyzerImplementation()
+fileprivate var mainSentimentAnalyzer: SentimentAnalyzer = SentimentAnalyzerImplementation()

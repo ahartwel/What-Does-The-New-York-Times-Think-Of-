@@ -7,17 +7,8 @@
 //
 
 import XCTest
-
-var timesArticleApiStub: TimesArticleAPIStub = TimesArticleAPIStub()
-var sentimentAnalyzerStub: SentimentAnalyzerStub = SentimentAnalyzerStub()
-extension SentimentAnalyzerViewModel {
-    var timesArticleApi: TimesArticleAPI {
-        return timesArticleApiStub
-    }
-    var sentimentAnalyzer: SentimentAnalyzer {
-        return sentimentAnalyzerStub
-    }
-}
+//TODO: Xcode is saying no such module NYTimesAPI, but then succededing and importing it anyway, figure out why
+@testable import NYTimesAPI
 
 class SentimentAnalyzerViewModelTests: XCTestCase {
     
@@ -39,22 +30,22 @@ class SentimentAnalyzerViewModelTests: XCTestCase {
     
     func testGettingArticlesCalledWhenTagSet() {
         self.viewModel = SentimentAnalyzerViewModel(withDelegate: self.viewModelDelegate)
-        timesArticleApiStub.getArticlesDelay = 5
+        TestingStubs.timesArticleApiStub.getArticlesDelay = 5
         self.viewModel?.set(tag: TimesTag(fullTag: ""))
         
         self.runTestAsync {
             XCTAssertEqual(self.viewModel?.loadingStatus.value, LoadingStatus.gettingArticles)
-            XCTAssertEqual(timesArticleApiStub.calledGetArticles, true)
+            XCTAssertEqual(TestingStubs.timesArticleApiStub.calledGetArticles, true)
         }
     }
     
     func testCalledSentimentAnalyzerOnArticlesSet() {
-        sentimentAnalyzerStub.delayforAnalyze = 5
+        TestingStubs.sentimentAnalyzerStub.delayforAnalyze = 5
         self.viewModel = SentimentAnalyzerViewModel(withDelegate: self.viewModelDelegate)
         self.viewModel?.articles.value = [TimesArticle(headline: "", snippet: "")]
         self.runTestAsync {
             XCTAssertEqual(self.viewModel?.loadingStatus.value, LoadingStatus.analysingArticles)
-            XCTAssertEqual(sentimentAnalyzerStub.calledAnalyze, true)
+            XCTAssertEqual(TestingStubs.sentimentAnalyzerStub.calledAnalyze, true)
         }
     }
     

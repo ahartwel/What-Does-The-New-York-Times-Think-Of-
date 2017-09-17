@@ -14,7 +14,11 @@ protocol TimesArticleRequester {
 
 extension TimesArticleRequester {
     var timesArticleApi: TimesArticleAPI {
-        return mainTimesArticleAPI
+        #if TESTING
+            return TestingStubs.timesArticleApiStub
+        #else
+            return mainTimesArticleAPI
+        #endif
     }
 }
 

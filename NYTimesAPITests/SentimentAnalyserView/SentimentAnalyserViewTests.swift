@@ -8,9 +8,10 @@
 
 import XCTest
 import FBSnapshotTestCase
+@testable import NYTimesAPI
 
 class SentimentAnalyserViewTests: FBSnapshotTestCase {
-    
+
     override func setUp() {
         super.setUp()
         self.recordMode = false
@@ -37,8 +38,8 @@ class SentimentAnalyserViewTests: FBSnapshotTestCase {
         let exp = self.expectation(description: "view will layout properly")
         let view = SentimentAnalysisView()
         let viewModelDelegate = SentimentAnalyzerViewModelDelegateStub()
-        sentimentAnalyzerStub.delayforAnalyze = 3
-        timesArticleApiStub.getArticlesDelay = 10
+        TestingStubs.sentimentAnalyzerStub.delayforAnalyze = 3
+        TestingStubs.timesArticleApiStub.getArticlesDelay = 10
         let viewModel = SentimentAnalyzerViewModel(withDelegate: viewModelDelegate)
         view.bind(to: viewModel, withActions: viewModel)
         view.onKeyboardClose() //the view isn't visible until the keyboard is closed
@@ -68,8 +69,8 @@ class SentimentAnalyserViewTests: FBSnapshotTestCase {
         let view = SentimentAnalysisView()
         let viewModelDelegate = SentimentAnalyzerViewModelDelegateStub()
         let viewModel = SentimentAnalyzerViewModel(withDelegate: viewModelDelegate)
-        sentimentAnalyzerStub.delayforAnalyze = 0
-        sentimentAnalyzerStub.analyzeReturn = [
+        TestingStubs.sentimentAnalyzerStub.delayforAnalyze = 0
+        TestingStubs.sentimentAnalyzerStub.analyzeReturn = [
             .good,
             .bad,
             .unknown,

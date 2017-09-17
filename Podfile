@@ -1,6 +1,6 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
-
+inhibit_all_warnings!
 
 
 target 'NYTimesAPI' do
@@ -24,10 +24,6 @@ target 'NYTimesAPI' do
     pod 'FBSnapshotTestCase'
   end
 
-  target 'NYTimesAPIUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
   
   post_install do |installer|
       installer.pods_project.targets.each do |target|

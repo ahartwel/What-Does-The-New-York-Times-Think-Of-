@@ -8,6 +8,7 @@
 
 import XCTest
 import SwiftyJSON
+@testable import NYTimesAPI
 
 class TopicFinderJSONParsingTest: XCTestCase {
 
@@ -26,6 +27,7 @@ class TopicFinderJSONParsingTest: XCTestCase {
         _ = timesTagApi.getTags(wihQuery: "").then { tags -> Void in
             print(tags)
             XCTAssertEqual(tags.count, 10)
+            //swiftlint:disable:next line_length
             XCTAssertEqual(tags[0].fullTag, "Mightier Than the Sword: Uncle Tom Cabin and the Battle for America (Book) (Ttl)")
             exp.fulfill()
         }

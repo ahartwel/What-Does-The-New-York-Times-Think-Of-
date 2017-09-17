@@ -7,6 +7,8 @@
 //
 
 import XCTest
+import CoreML
+@testable import NYTimesAPI
 
 class SentimentAnalysis: XCTestCase {
     
@@ -24,12 +26,5 @@ class SentimentAnalysis: XCTestCase {
             TimesArticle(headline: "Wonderful great awesome", snippet: "happy amazing great")
         )
         XCTAssertEqual(sentiment, .good)
-    }
-    
-    func testNeutralAnalysis() {
-        let analyzer = SentimentAnalyzerImplementation()
-        let sentiment = analyzer.analyze(timesArticle:
-            TimesArticle(headline: "ok computer science keyboard", snippet: "floor ceiling ground")
-        )
     }
 }

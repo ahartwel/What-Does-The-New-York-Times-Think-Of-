@@ -14,7 +14,11 @@ protocol TimesTagRequester {
 
 extension TimesTagRequester {
     var timesTagApi: TimesTagAPI {
-        return mainTimesTagAPI
+        #if TESTING
+            return TestingStubs.timesTagApiStub
+        #else
+            return mainTimesTagAPI
+        #endif
     }
 }
 

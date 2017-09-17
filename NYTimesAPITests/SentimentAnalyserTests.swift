@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import NYTimesAPI
 
 class SentimentAnalyzerTests: XCTestCase {
     

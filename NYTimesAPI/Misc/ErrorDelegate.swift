@@ -17,7 +17,8 @@ struct NYTimesError: Error {
 protocol ErrorPresenter {
     func show(error: Error)
 }
-
+// swiftlint:disable:next line_length
+// When a ViewController conforms to error presenter it can take an error and automatically display an alert informaing the user about it
 extension ErrorPresenter where Self: UIViewController {
     func show(error: Error) {
         let error = (error as? NYTimesError) ?? NYTimesError()

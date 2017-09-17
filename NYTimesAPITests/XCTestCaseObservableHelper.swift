@@ -8,6 +8,7 @@
 
 import Foundation
 import XCTest
+@testable import NYTimesAPI
 
 extension XCTestCase {
     func runTestAsync(time: Double = 0.1, _ closure: @escaping () -> Void) {
