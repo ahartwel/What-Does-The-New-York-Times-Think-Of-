@@ -11,7 +11,7 @@ import ReactiveKit
 import Bond
 import PromiseKit
 
-protocol SentimentAnalyzerActions {
+protocol SentimentAnalyzerActions: class {
     func set(tag: TimesTag)
 }
 
@@ -177,5 +177,14 @@ class SentimentAnalyzerViewModel: SentimentAnalyzerBindables, TimesArticleReques
 extension SentimentAnalyzerViewModel: SentimentAnalyzerActions {
     func set(tag: TimesTag) {
         self.currentTag.value = tag
+    }
+}
+
+class SentimentAnalyzerViewModelDelegateStub: SentimentAnalyzerViewModelDelegate {
+    var calledShowError: Bool = false
+    var calledShowErrorWithError: Error?
+    func show(error: Error) {
+        self.calledShowError = true
+        self.calledShowErrorWithError = error
     }
 }

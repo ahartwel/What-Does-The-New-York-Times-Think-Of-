@@ -25,9 +25,9 @@
 		2C522D001F6EDFF200F0933E /* SentimentAnalyserViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCEE5A41F6DA90B0093F870 /* SentimentAnalyserViewTests.swift */; };
 		2C522D011F6EDFF400F0933E /* SentimentAnalyserViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC3471F69F1220077D711 /* SentimentAnalyserViewModelTests.swift */; };
 		2C522D021F6EDFFF00F0933E /* TopicFinderViewModelDelegateStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC33A1F69E6230077D711 /* TopicFinderViewModelDelegateStub.swift */; };
-		2C522D031F6EE25500F0933E /* SentimentAnalyserViewModelDelegateStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DC3431F69E7170077D711 /* SentimentAnalyserViewModelDelegateStub.swift */; };
 		2C522D081F6EE8B100F0933E /* TestingStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C522D071F6EE8B100F0933E /* TestingStubs.swift */; };
 		2C522D091F6EEABF00F0933E /* SentimentAnalyzerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCEE5A61F6E0D130093F870 /* SentimentAnalyzerStub.swift */; };
+		2C8CD5B81F6F15A2007B2A80 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8CD5B71F6F15A2007B2A80 /* MainViewControllerTests.swift */; };
 		2C8DC5191F6A110300B4CC3A /* SentimentAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8DC5181F6A110300B4CC3A /* SentimentAnalysis.swift */; };
 		2C9885711F6CA793007D96FC /* KeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9885701F6CA793007D96FC /* KeyboardListener.swift */; };
 		2CAD4C551F6B5CD9008C737B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAD4C541F6B5CD9008C737B /* MainView.swift */; };
@@ -40,6 +40,7 @@
 		2CDA610B1F6A0E120033D8D8 /* SentimentPolarity.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2CDA61091F6A0E120033D8D8 /* SentimentPolarity.mlmodel */; };
 		2CEF54BF1F69CE110082063B /* TopicFinderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEF54BE1F69CE110082063B /* TopicFinderViewModel.swift */; };
 		2CEF54C71F69D1030082063B /* TopicFinderViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEF54C61F69D1030082063B /* TopicFinderViewModelTests.swift */; };
+		2CF4BCDE1F6F186E006B25ED /* ReadMeControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF4BCDD1F6F186E006B25ED /* ReadMeControllerTests.swift */; };
 		2CF5F6D61F69C2A900B1A0F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5F6D51F69C2A900B1A0F7 /* AppDelegate.swift */; };
 		2CF5F6D81F69C2A900B1A0F7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5F6D71F69C2A900B1A0F7 /* MainViewController.swift */; };
 		2CF5F6DB1F69C2A900B1A0F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CF5F6D91F69C2A900B1A0F7 /* Main.storyboard */; };
@@ -75,7 +76,6 @@
 		2C0DC3361F69E57C0077D711 /* TimesArticleAPIDependencyInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesArticleAPIDependencyInjector.swift; sourceTree = "<group>"; };
 		2C0DC33A1F69E6230077D711 /* TopicFinderViewModelDelegateStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicFinderViewModelDelegateStub.swift; sourceTree = "<group>"; };
 		2C0DC33F1F69E6A90077D711 /* SentimentAnalyserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentAnalyserViewModel.swift; sourceTree = "<group>"; };
-		2C0DC3431F69E7170077D711 /* SentimentAnalyserViewModelDelegateStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentAnalyserViewModelDelegateStub.swift; sourceTree = "<group>"; };
 		2C0DC3471F69F1220077D711 /* SentimentAnalyserViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentAnalyserViewModelTests.swift; sourceTree = "<group>"; };
 		2C0DC3491F69FA4D0077D711 /* SentimentAnalyser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentAnalyser.swift; sourceTree = "<group>"; };
 		2C0DC34E1F69FC3F0077D711 /* SentimentAnalyserDependencyInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentAnalyserDependencyInjector.swift; sourceTree = "<group>"; };
@@ -86,6 +86,7 @@
 		2C0F1A7B1F6B55C400BB740D /* TopicFinderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicFinderView.swift; sourceTree = "<group>"; };
 		2C420ED01F6D7A0500CBD50D /* TopicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTableViewCell.swift; sourceTree = "<group>"; };
 		2C522D071F6EE8B100F0933E /* TestingStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingStubs.swift; sourceTree = "<group>"; };
+		2C8CD5B71F6F15A2007B2A80 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
 		2C8DC5181F6A110300B4CC3A /* SentimentAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentAnalysis.swift; sourceTree = "<group>"; };
 		2C9885701F6CA793007D96FC /* KeyboardListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardListener.swift; sourceTree = "<group>"; };
 		2CAD4C541F6B5CD9008C737B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 		2CDA61091F6A0E120033D8D8 /* SentimentPolarity.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SentimentPolarity.mlmodel; sourceTree = "<group>"; };
 		2CEF54BE1F69CE110082063B /* TopicFinderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicFinderViewModel.swift; sourceTree = "<group>"; };
 		2CEF54C61F69D1030082063B /* TopicFinderViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicFinderViewModelTests.swift; sourceTree = "<group>"; };
+		2CF4BCDD1F6F186E006B25ED /* ReadMeControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMeControllerTests.swift; sourceTree = "<group>"; };
 		2CF5F6D21F69C2A900B1A0F7 /* NYTimesAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYTimesAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CF5F6D51F69C2A900B1A0F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CF5F6D71F69C2A900B1A0F7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -173,7 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				2C0DC33F1F69E6A90077D711 /* SentimentAnalyserViewModel.swift */,
-				2C0DC3431F69E7170077D711 /* SentimentAnalyserViewModelDelegateStub.swift */,
 				2CAD4C5B1F6CA3E9008C737B /* SentimentAnalysisView.swift */,
 			);
 			path = SentimentAnalyserView;
@@ -314,6 +315,8 @@
 				2C0DC3521F69FEAC0077D711 /* SentimentAnalyserTests.swift */,
 				2C8DC5181F6A110300B4CC3A /* SentimentAnalysis.swift */,
 				2C0DC3231F69D3A30077D711 /* XCTestCaseObservableHelper.swift */,
+				2C8CD5B71F6F15A2007B2A80 /* MainViewControllerTests.swift */,
+				2CF4BCDD1F6F186E006B25ED /* ReadMeControllerTests.swift */,
 			);
 			path = NYTimesAPITests;
 			sourceTree = "<group>";
@@ -600,7 +603,6 @@
 				2CAD4C5C1F6CA3E9008C737B /* SentimentAnalysisView.swift in Sources */,
 				2CF5F7111F69C76600B1A0F7 /* TimesTags.swift in Sources */,
 				2C0DC32B1F69E0D40077D711 /* TimesArticleApiDefinition.swift in Sources */,
-				2C522D031F6EE25500F0933E /* SentimentAnalyserViewModelDelegateStub.swift in Sources */,
 				2CF5F6D61F69C2A900B1A0F7 /* AppDelegate.swift in Sources */,
 				2C0DC34A1F69FA4D0077D711 /* SentimentAnalyser.swift in Sources */,
 				2C522D081F6EE8B100F0933E /* TestingStubs.swift in Sources */,
@@ -614,12 +616,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C8CD5B81F6F15A2007B2A80 /* MainViewControllerTests.swift in Sources */,
 				2C522D011F6EDFF400F0933E /* SentimentAnalyserViewModelTests.swift in Sources */,
 				2CEF54C71F69D1030082063B /* TopicFinderViewModelTests.swift in Sources */,
 				2C0DC3531F69FEAC0077D711 /* SentimentAnalyserTests.swift in Sources */,
 				2C8DC5191F6A110300B4CC3A /* SentimentAnalysis.swift in Sources */,
 				2C0DC3241F69D3A30077D711 /* XCTestCaseObservableHelper.swift in Sources */,
 				2C0F1A781F6B531500BB740D /* ArticleAPIParsing.swift in Sources */,
+				2CF4BCDE1F6F186E006B25ED /* ReadMeControllerTests.swift in Sources */,
 				2C0F1A751F6B490B00BB740D /* TopicFinderJSONParsingTest.swift in Sources */,
 				2CDA610B1F6A0E120033D8D8 /* SentimentPolarity.mlmodel in Sources */,
 				2C0F1A7A1F6B559300BB740D /* TopicSearchViewTest.swift in Sources */,

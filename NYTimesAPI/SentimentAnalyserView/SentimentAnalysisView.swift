@@ -33,6 +33,7 @@ class SentimentAnalysisView: UIView {
         super.init(frame: frame)
         self.didLoad()
     }
+    weak var actions: SentimentAnalyzerActions?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -48,6 +49,7 @@ class SentimentAnalysisView: UIView {
     }
     
     func bind(to model: SentimentAnalyzerBindables, withActions actions: SentimentAnalyzerActions) {
+        self.actions = actions
         model.loadingStatusText.observeNext(with: { status in
             self.loadingStateIndicator.text = status
         }).dispose(in: self.bag)

@@ -27,6 +27,9 @@ class ReadMeWrapper {
 }
 
 class ReadMeController: UIViewController {
+    #if TESTING
+    var calledDismiss: Bool = false
+    #endif
     override func loadView() {
         self.title = "About"
         self.view = ReadMeWrapper.readmeView
@@ -40,6 +43,16 @@ class ReadMeController: UIViewController {
                                                                     action: #selector(self.tappedBack))
     }
     @objc func tappedBack() {
-        self.navigationController?.dismiss(animated: true)
+        self.dismiss(animated: true)
     }
 }
+
+#if TESTING
+    extension ReadMeController {
+        override func dismiss(animated flag: Bool, completion: (() -> Swift.Void)? = nil) {
+            super.dismiss(animated: true)
+            self.calledDismiss = true
+        }
+    
+    }
+#endif

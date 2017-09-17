@@ -9,6 +9,10 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    #if TESTING
+    var calledPresentViewController: Bool = false
+    var calledPresentViewControllerWithController: UIViewController?
+    #endif
     lazy var mainView: MainView = {
         var view = MainView()
         view.delegate = self
@@ -41,3 +45,12 @@ extension MainViewController: MainViewDelegate {
         self.present(navigationController, animated: true, completion: nil)
     }
 }
+
+#if TESTING
+    extension MainViewController {
+        override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Swift.Void)? = nil) {
+            self.calledPresentViewControllerWithController = viewControllerToPresent
+            self.calledPresentViewController = true
+        }
+    }
+#endif

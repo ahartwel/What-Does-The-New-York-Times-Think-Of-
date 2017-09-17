@@ -71,4 +71,14 @@ class TopicSearchViewTest: FBSnapshotTestCase {
         self.waitForExpectations(timeout: 0.3, handler: nil)
     }
     
+    func testTextDidChange() {
+        let view = TopicFinderView()
+        let viewModelDelegate = TopicFinderViewModelDelegateStub()
+        let viewModel = TopicFinderViewModel(delegate: viewModelDelegate)
+        view.bind(to: viewModel.bindables, withActions: viewModel.actions)
+        view.searchView.text = "test"
+        view.searchViewChanged(view.searchView)
+        XCTAssertEqual(viewModel.currentQuery.value, "test")
+    }
+    
 }
