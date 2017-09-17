@@ -19,6 +19,7 @@ Allows you to search for a topic and see what the NYTimes writers think of it.
 - Right now the app only runs analysis on the headlines and abstracts, it would be good to be able to get the full articles to analyze.
 - An explanation of what "(Per)"/"(Des)" annotations are at the end of tags, maybe replacing them with the full words "(Person)" or removing them from the UI.
 - Better error handling. Some topics don't return any articles and right now if an error happens during sentiment analysis because of no articles, it is ignored.
+- Automate stub generation with Sourcery
 
 ### Architectural Decisions:
 #### MVVM and View Models
@@ -44,7 +45,8 @@ Allows you to search for a topic and see what the NYTimes writers think of it.
 - When a service is created a stub is also created.
 - A `{{ServiceName}}Requester` protocol is defined.
     - This protocol serves as a dependency injector. View Models will conform the the  `{{ServiceName}}Requester` protocol and depending on which build configuration is compiled the conformer will automatically gain access to a global shared implementation of the service or a global shared stub.
-    - The `Requester` protocol gives you the ease of use of singletons (you don't have to worry about passing the service around in your app), without testability nightmares. 	- When you run your app's tests, every view model will automatically point to the stubbed version of your services and you can control what they return (ex. `ServiceStubs.timesTagApiStub.getTagsReturn = stubbedTagsResponse`).
+    - The `Requester` protocol gives you the ease of use of singletons (you don't have to worry about passing the service around in your app), without testability nightmares.
+    - When you run your app's tests, every view model will automatically point to the stubbed version of your services and you can control what they return (ex. `ServiceStubs.timesTagApiStub.getTagsReturn = stubbedTagsResponse`).
 
 #### Views
 - Views are defined in code with constraints written using SnapKit
