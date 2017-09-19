@@ -16,6 +16,8 @@ class SentimentAnalyserViewTests: FBSnapshotTestCase {
         super.setUp()
         self.recordMode = false
         self.usesDrawViewHierarchyInRect = true
+        TestingStubs.sentimentAnalyzerStub = SentimentAnalyzerStub()
+        TestingStubs.timesArticleApiStub = TimesArticleAPIStub()
     }
     
     func testInitialStateAfterSelectingTag() {
